@@ -384,7 +384,7 @@ class modEnjoyHolidays extends DolibarrModules
 			'langs'=>'enjoyholidays@enjoyholidays',
 			'position'=>1000+$r,
 			'enabled'=>'isModEnabled("enjoyholidays")',
-			'perms'=>'$user->hasRight("enjoyholidays", "travelpackage", "read")',
+			'perms'=>'1',
 			'target'=>'',
 			'user'=>2,
 		);
@@ -398,7 +398,7 @@ class modEnjoyHolidays extends DolibarrModules
             'langs'=>'enjoyholidays@enjoyholidays',
             'position'=>1000+$r,
             'enabled'=>'isModEnabled("enjoyholidays")',
-			'perms'=>'$user->hasRight("enjoyholidays", "travelpackage", "read")',
+			'perms'=>'1',
             'target'=>'',
             'user'=>2,
         );
@@ -412,7 +412,7 @@ class modEnjoyHolidays extends DolibarrModules
             'langs'=>'enjoyholidays@enjoyholidays',
             'position'=>1000+$r,
             'enabled'=>'isModEnabled("enjoyholidays")',
-			'perms'=>'$user->hasRight("enjoyholidays", "travelpackage", "write")',
+			'perms'=>'1',
             'target'=>'',
             'user'=>2
         );
