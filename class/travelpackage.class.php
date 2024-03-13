@@ -119,6 +119,7 @@ class TravelPackage extends CommonObject
 		"amount" => array("type"=>"price", "label"=>"Amount", "enabled"=>"1", 'position'=>40, 'notnull'=>0, "visible"=>"1", "default"=>"null", "isameasure"=>"1", "help"=>"Help text for amount", "validate"=>"1",),
 		"travelDepartureDate" => array("type"=>"datetime", "label"=>"TravelDepartureDate", "enabled"=>"1", 'position'=>50, 'notnull'=>0, "visible"=>"1",),
 		"travelBackDate" => array("type"=>"datetime", "label"=>"TravelBackDate", "enabled"=>"1", 'position'=>50, 'notnull'=>0, "visible"=>"1",),
+		"status" => array("type"=>"integer", "label"=>"Status", "enabled"=>"1", 'position'=>50, 'notnull'=>0, "visible"=>"1",),
 	);
 	public $rowid;
 	public $ref;
@@ -126,6 +127,7 @@ class TravelPackage extends CommonObject
 	public $amount;
 	public $travelDepartureDate;
 	public $travelBackDate;
+	public $status;
 	// END MODULEBUILDER PROPERTIES
 
 
