@@ -22,6 +22,7 @@ CREATE TABLE llx_enjoyholidays_travelpackage(
 	amount double DEFAULT NULL, 
 	travelDepartureDate datetime, 
 	travelBackDate datetime, 
-	status integer
+	status integer, 
+	destinationCountry integer NOT NULL
 	-- END MODULEBUILDER FIELDS
 ) ENGINE=innodb;
