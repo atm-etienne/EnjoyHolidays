@@ -18,11 +18,11 @@ CREATE TABLE llx_enjoyholidays_travelpackage(
 	-- BEGIN MODULEBUILDER FIELDS
 	rowid integer AUTO_INCREMENT PRIMARY KEY NOT NULL, 
 	ref varchar(128) NOT NULL, 
+	destinationCountry integer NOT NULL, 
 	label varchar(255) NOT NULL, 
 	amount double DEFAULT NULL, 
 	travelDepartureDate datetime, 
 	travelBackDate datetime, 
-	status integer, 
-	destinationCountry integer NOT NULL
+	status integer NOT NULL DEFAULT 0
 	-- END MODULEBUILDER FIELDS
 ) ENGINE=innodb;
