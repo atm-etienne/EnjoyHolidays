@@ -60,9 +60,9 @@ class TravelPackage extends CommonObject
 	public $isextrafieldmanaged = 1;
 
 	/**
-	 * @var string String with name of icon for travelpackage. Must be a 'fa-xxx' fontawesome code (or 'fa-xxx_fa_color_size') or 'travelpackage@enjoyholidays' if picto is file 'img/object_travelpackage.png'.
+	 * @var string String with name of icon for travelpackage. Must be a 'fa-xxx' fontawesome code (or 'fa-xxx_fa_color_size') or 'travelpackage@enjoyholidays' if picto is file 'img/object_enjoyholidays.png'.
 	 */
-	public $picto = 'fa-file';
+	public $picto = 'enjoyholidays.png@enjoyholidays';
 
 
 	const STATUS_DRAFT = 0;
