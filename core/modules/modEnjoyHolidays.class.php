@@ -287,24 +287,27 @@ class modEnjoyHolidays extends DolibarrModules
 		$r = 0;
 		// Add here entries to declare new permissions
 		/* BEGIN MODULEBUILDER PERMISSIONS */
-		/*
-		$o = 1;
-		$this->rights[$r][0] = $this->numero . sprintf("%02d", ($o * 10) + 1); // Permission id (must not be already used)
-		$this->rights[$r][1] = 'Read objects of EnjoyHolidays'; // Permission label
-		$this->rights[$r][4] = 'travelpackage';
-		$this->rights[$r][5] = 'read'; // In php code, permission will be checked by test if ($user->hasRight('enjoyholidays', 'travelpackage', 'read'))
+		$this->rights[$r][0] = $this->numero . sprintf('%02d', (0 * 10) + 1 + 1);
+		$this->rights[$r][1] = '';
+		$this->rights[$r][4] = '';
+		$this->rights[$r][5] = '';
 		$r++;
-		$this->rights[$r][0] = $this->numero . sprintf("%02d", ($o * 10) + 2); // Permission id (must not be already used)
-		$this->rights[$r][1] = 'Create/Update objects of EnjoyHolidays'; // Permission label
+		$this->rights[$r][0] = $this->numero . sprintf('%02d', (1 * 10) + 0 + 1);
+		$this->rights[$r][1] = 'Read TravelPackage object of EnjoyHolidays';
 		$this->rights[$r][4] = 'travelpackage';
-		$this->rights[$r][5] = 'write'; // In php code, permission will be checked by test if ($user->hasRight('enjoyholidays', 'travelpackage', 'write'))
+		$this->rights[$r][5] = 'read';
 		$r++;
-		$this->rights[$r][0] = $this->numero . sprintf("%02d", ($o * 10) + 3); // Permission id (must not be already used)
-		$this->rights[$r][1] = 'Delete objects of EnjoyHolidays'; // Permission label
+		$this->rights[$r][0] = $this->numero . sprintf('%02d', (1 * 10) + 1 + 1);
+		$this->rights[$r][1] = 'Create/Update TravelPackage object of EnjoyHolidays';
 		$this->rights[$r][4] = 'travelpackage';
-		$this->rights[$r][5] = 'delete'; // In php code, permission will be checked by test if ($user->hasRight('enjoyholidays', 'travelpackage', 'delete'))
+		$this->rights[$r][5] = 'write';
 		$r++;
-		*/
+		$this->rights[$r][0] = $this->numero . sprintf('%02d', (1 * 10) + 2 + 1);
+		$this->rights[$r][1] = 'Delete TravelPackage object of EnjoyHolidays';
+		$this->rights[$r][4] = 'travelpackage';
+		$this->rights[$r][5] = 'delete';
+		$r++;
+
 		/* END MODULEBUILDER PERMISSIONS */
 
 		// Main menu entries to add
@@ -384,7 +387,7 @@ class modEnjoyHolidays extends DolibarrModules
 			'langs'=>'enjoyholidays@enjoyholidays',
 			'position'=>1000+$r,
 			'enabled'=>'isModEnabled("enjoyholidays")',
-			'perms'=>'1',
+			'perms'=>'$user->hasRight("enjoyholidays", "travelpackage", "read")',
 			'target'=>'',
 			'user'=>2,
 		);
@@ -398,7 +401,7 @@ class modEnjoyHolidays extends DolibarrModules
             'langs'=>'enjoyholidays@enjoyholidays',
             'position'=>1000+$r,
             'enabled'=>'isModEnabled("enjoyholidays")',
-			'perms'=>'1',
+			'perms'=>'$user->hasRight("enjoyholidays", "travelpackage", "read")',
             'target'=>'',
             'user'=>2,
         );
@@ -412,7 +415,7 @@ class modEnjoyHolidays extends DolibarrModules
             'langs'=>'enjoyholidays@enjoyholidays',
             'position'=>1000+$r,
             'enabled'=>'isModEnabled("enjoyholidays")',
-			'perms'=>'1',
+			'perms'=>'$user->hasRight("enjoyholidays", "travelpackage", "write")',
             'target'=>'',
             'user'=>2
         );
