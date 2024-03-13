@@ -252,8 +252,8 @@ class modEnjoyHolidays extends DolibarrModules
 			//  0 => array(
 			//      'label' => 'MyJob label',
 			//      'jobtype' => 'method',
-			//      'class' => '/enjoyholidays/class/myobject.class.php',
-			//      'objectname' => 'MyObject',
+			//      'class' => '/enjoyholidays/class/travelpackage.class.php',
+			//      'objectname' => 'TravelPackage',
 			//      'method' => 'doScheduledJob',
 			//      'parameters' => '',
 			//      'comment' => 'Comment',
@@ -279,18 +279,18 @@ class modEnjoyHolidays extends DolibarrModules
 		$o = 1;
 		$this->rights[$r][0] = $this->numero . sprintf("%02d", ($o * 10) + 1); // Permission id (must not be already used)
 		$this->rights[$r][1] = 'Read objects of EnjoyHolidays'; // Permission label
-		$this->rights[$r][4] = 'myobject';
-		$this->rights[$r][5] = 'read'; // In php code, permission will be checked by test if ($user->hasRight('enjoyholidays', 'myobject', 'read'))
+		$this->rights[$r][4] = 'travelpackage';
+		$this->rights[$r][5] = 'read'; // In php code, permission will be checked by test if ($user->hasRight('enjoyholidays', 'travelpackage', 'read'))
 		$r++;
 		$this->rights[$r][0] = $this->numero . sprintf("%02d", ($o * 10) + 2); // Permission id (must not be already used)
 		$this->rights[$r][1] = 'Create/Update objects of EnjoyHolidays'; // Permission label
-		$this->rights[$r][4] = 'myobject';
-		$this->rights[$r][5] = 'write'; // In php code, permission will be checked by test if ($user->hasRight('enjoyholidays', 'myobject', 'write'))
+		$this->rights[$r][4] = 'travelpackage';
+		$this->rights[$r][5] = 'write'; // In php code, permission will be checked by test if ($user->hasRight('enjoyholidays', 'travelpackage', 'write'))
 		$r++;
 		$this->rights[$r][0] = $this->numero . sprintf("%02d", ($o * 10) + 3); // Permission id (must not be already used)
 		$this->rights[$r][1] = 'Delete objects of EnjoyHolidays'; // Permission label
-		$this->rights[$r][4] = 'myobject';
-		$this->rights[$r][5] = 'delete'; // In php code, permission will be checked by test if ($user->hasRight('enjoyholidays', 'myobject', 'delete'))
+		$this->rights[$r][4] = 'travelpackage';
+		$this->rights[$r][5] = 'delete'; // In php code, permission will be checked by test if ($user->hasRight('enjoyholidays', 'travelpackage', 'delete'))
 		$r++;
 		*/
 		/* END MODULEBUILDER PERMISSIONS */
@@ -311,7 +311,7 @@ class modEnjoyHolidays extends DolibarrModules
 			'langs'=>'enjoyholidays@enjoyholidays', // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
 			'position'=>1000 + $r,
 			'enabled'=>'isModEnabled("enjoyholidays")', // Define condition to show or hide menu entry. Use 'isModEnabled("enjoyholidays")' if entry must be visible if module is enabled.
-			'perms'=>'1', // Use 'perms'=>'$user->hasRight("enjoyholidays", "myobject", "read")' if you want your menu with a permission rules
+			'perms'=>'1', // Use 'perms'=>'$user->hasRight("enjoyholidays", "travelpackage", "read")' if you want your menu with a permission rules
 			'target'=>'',
 			'user'=>2, // 0=Menu for internal users, 1=external users, 2=both
 		);
@@ -320,46 +320,92 @@ class modEnjoyHolidays extends DolibarrModules
 		/*$this->menu[$r++]=array(
 			'fk_menu'=>'fk_mainmenu=enjoyholidays',      // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
 			'type'=>'left',                          // This is a Left menu entry
-			'titre'=>'MyObject',
+			'titre'=>'TravelPackage',
 			'prefix' => img_picto('', $this->picto, 'class="pictofixedwidth valignmiddle paddingright"'),
 			'mainmenu'=>'enjoyholidays',
-			'leftmenu'=>'myobject',
+			'leftmenu'=>'travelpackage',
 			'url'=>'/enjoyholidays/enjoyholidaysindex.php',
 			'langs'=>'enjoyholidays@enjoyholidays',	        // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
 			'position'=>1000+$r,
 			'enabled'=>'isModEnabled("enjoyholidays")', // Define condition to show or hide menu entry. Use 'isModEnabled("enjoyholidays")' if entry must be visible if module is enabled.
-			'perms'=>'$user->hasRight("enjoyholidays", "myobject", "read")',
+			'perms'=>'$user->hasRight("enjoyholidays", "travelpackage", "read")',
 			'target'=>'',
 			'user'=>2,				                // 0=Menu for internal users, 1=external users, 2=both
 		);
 		$this->menu[$r++]=array(
-			'fk_menu'=>'fk_mainmenu=enjoyholidays,fk_leftmenu=myobject',	    // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
+			'fk_menu'=>'fk_mainmenu=enjoyholidays,fk_leftmenu=travelpackage',	    // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
 			'type'=>'left',			                // This is a Left menu entry
-			'titre'=>'List_MyObject',
+			'titre'=>'List_TravelPackage',
 			'mainmenu'=>'enjoyholidays',
-			'leftmenu'=>'enjoyholidays_myobject_list',
-			'url'=>'/enjoyholidays/myobject_list.php',
+			'leftmenu'=>'enjoyholidays_travelpackage_list',
+			'url'=>'/enjoyholidays/travelpackage_list.php',
 			'langs'=>'enjoyholidays@enjoyholidays',	        // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
 			'position'=>1000+$r,
 			'enabled'=>'isModEnabled("enjoyholidays")', // Define condition to show or hide menu entry. Use 'isModEnabled("enjoyholidays")' if entry must be visible if module is enabled.
-			'perms'=>'$user->hasRight("enjoyholidays", "myobject", "read")'
+			'perms'=>'$user->hasRight("enjoyholidays", "travelpackage", "read")'
 			'target'=>'',
 			'user'=>2,				                // 0=Menu for internal users, 1=external users, 2=both
 		);
 		$this->menu[$r++]=array(
-			'fk_menu'=>'fk_mainmenu=enjoyholidays,fk_leftmenu=myobject',	    // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
+			'fk_menu'=>'fk_mainmenu=enjoyholidays,fk_leftmenu=travelpackage',	    // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
 			'type'=>'left',			                // This is a Left menu entry
-			'titre'=>'New_MyObject',
+			'titre'=>'New_TravelPackage',
 			'mainmenu'=>'enjoyholidays',
-			'leftmenu'=>'enjoyholidays_myobject_new',
-			'url'=>'/enjoyholidays/myobject_card.php?action=create',
+			'leftmenu'=>'enjoyholidays_travelpackage_new',
+			'url'=>'/enjoyholidays/travelpackage_card.php?action=create',
 			'langs'=>'enjoyholidays@enjoyholidays',	        // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
 			'position'=>1000+$r,
 			'enabled'=>'isModEnabled("enjoyholidays")', // Define condition to show or hide menu entry. Use 'isModEnabled("enjoyholidays")' if entry must be visible if module is enabled. Use '$leftmenu==\'system\'' to show if leftmenu system is selected.
-			'perms'=>'$user->hasRight("enjoyholidays", "myobject", "write")'
+			'perms'=>'$user->hasRight("enjoyholidays", "travelpackage", "write")'
 			'target'=>'',
 			'user'=>2,				                // 0=Menu for internal users, 1=external users, 2=both
 		);*/
+		/*LEFTMENU TRAVELPACKAGE*/
+		$this->menu[$r++]=array(
+			'fk_menu'=>'fk_mainmenu=enjoyholidays',
+			'type'=>'left',
+			'titre'=>'TravelPackage',
+			'prefix' => img_picto('', $this->picto, 'class="paddingright pictofixedwidth valignmiddle"'),
+			'mainmenu'=>'enjoyholidays',
+			'leftmenu'=>'travelpackage',
+			'url'=>'/enjoyholidays/travelpackage_list.php',
+			'langs'=>'enjoyholidays@enjoyholidays',
+			'position'=>1000+$r,
+			'enabled'=>'isModEnabled("enjoyholidays")',
+			'perms'=>'$user->hasRight("enjoyholidays", "travelpackage", "read")',
+			'target'=>'',
+			'user'=>2,
+		);
+        $this->menu[$r++]=array(
+            'fk_menu'=>'fk_mainmenu=enjoyholidays,fk_leftmenu=travelpackage',
+            'type'=>'left',
+            'titre'=>'List TravelPackage',
+            'mainmenu'=>'enjoyholidays',
+            'leftmenu'=>'enjoyholidays_travelpackage_list',
+            'url'=>'/enjoyholidays/travelpackage_list.php',
+            'langs'=>'enjoyholidays@enjoyholidays',
+            'position'=>1000+$r,
+            'enabled'=>'isModEnabled("enjoyholidays")',
+			'perms'=>'$user->hasRight("enjoyholidays", "travelpackage", "read")',
+            'target'=>'',
+            'user'=>2,
+        );
+        $this->menu[$r++]=array(
+            'fk_menu'=>'fk_mainmenu=enjoyholidays,fk_leftmenu=travelpackage',
+            'type'=>'left',
+            'titre'=>'New TravelPackage',
+            'mainmenu'=>'enjoyholidays',
+            'leftmenu'=>'enjoyholidays_travelpackage_new',
+            'url'=>'/enjoyholidays/travelpackage_card.php?action=create',
+            'langs'=>'enjoyholidays@enjoyholidays',
+            'position'=>1000+$r,
+            'enabled'=>'isModEnabled("enjoyholidays")',
+			'perms'=>'$user->hasRight("enjoyholidays", "travelpackage", "write")',
+            'target'=>'',
+            'user'=>2
+        );
+
+		/*END LEFTMENU TRAVELPACKAGE*/
 		/* END MODULEBUILDER LEFTMENU MYOBJECT */
 		// Exports profiles provided by this module
 		$r = 1;
@@ -367,28 +413,28 @@ class modEnjoyHolidays extends DolibarrModules
 		/*
 		$langs->load("enjoyholidays@enjoyholidays");
 		$this->export_code[$r]=$this->rights_class.'_'.$r;
-		$this->export_label[$r]='MyObjectLines';	// Translation key (used only if key ExportDataset_xxx_z not found)
-		$this->export_icon[$r]='myobject@enjoyholidays';
+		$this->export_label[$r]='TravelPackageLines';	// Translation key (used only if key ExportDataset_xxx_z not found)
+		$this->export_icon[$r]='travelpackage@enjoyholidays';
 		// Define $this->export_fields_array, $this->export_TypeFields_array and $this->export_entities_array
-		$keyforclass = 'MyObject'; $keyforclassfile='/enjoyholidays/class/myobject.class.php'; $keyforelement='myobject@enjoyholidays';
+		$keyforclass = 'TravelPackage'; $keyforclassfile='/enjoyholidays/class/travelpackage.class.php'; $keyforelement='travelpackage@enjoyholidays';
 		include DOL_DOCUMENT_ROOT.'/core/commonfieldsinexport.inc.php';
 		//$this->export_fields_array[$r]['t.fieldtoadd']='FieldToAdd'; $this->export_TypeFields_array[$r]['t.fieldtoadd']='Text';
 		//unset($this->export_fields_array[$r]['t.fieldtoremove']);
-		//$keyforclass = 'MyObjectLine'; $keyforclassfile='/enjoyholidays/class/myobject.class.php'; $keyforelement='myobjectline@enjoyholidays'; $keyforalias='tl';
+		//$keyforclass = 'TravelPackageLine'; $keyforclassfile='/enjoyholidays/class/travelpackage.class.php'; $keyforelement='travelpackageline@enjoyholidays'; $keyforalias='tl';
 		//include DOL_DOCUMENT_ROOT.'/core/commonfieldsinexport.inc.php';
-		$keyforselect='myobject'; $keyforaliasextra='extra'; $keyforelement='myobject@enjoyholidays';
+		$keyforselect='travelpackage'; $keyforaliasextra='extra'; $keyforelement='travelpackage@enjoyholidays';
 		include DOL_DOCUMENT_ROOT.'/core/extrafieldsinexport.inc.php';
-		//$keyforselect='myobjectline'; $keyforaliasextra='extraline'; $keyforelement='myobjectline@enjoyholidays';
+		//$keyforselect='travelpackageline'; $keyforaliasextra='extraline'; $keyforelement='travelpackageline@enjoyholidays';
 		//include DOL_DOCUMENT_ROOT.'/core/extrafieldsinexport.inc.php';
-		//$this->export_dependencies_array[$r] = array('myobjectline'=>array('tl.rowid','tl.ref')); // To force to activate one or several fields if we select some fields that need same (like to select a unique key if we ask a field of a child to avoid the DISTINCT to discard them, or for computed field than need several other fields)
+		//$this->export_dependencies_array[$r] = array('travelpackageline'=>array('tl.rowid','tl.ref')); // To force to activate one or several fields if we select some fields that need same (like to select a unique key if we ask a field of a child to avoid the DISTINCT to discard them, or for computed field than need several other fields)
 		//$this->export_special_array[$r] = array('t.field'=>'...');
 		//$this->export_examplevalues_array[$r] = array('t.field'=>'Example');
 		//$this->export_help_array[$r] = array('t.field'=>'FieldDescHelp');
 		$this->export_sql_start[$r]='SELECT DISTINCT ';
-		$this->export_sql_end[$r]  =' FROM '.MAIN_DB_PREFIX.'myobject as t';
-		//$this->export_sql_end[$r]  =' LEFT JOIN '.MAIN_DB_PREFIX.'myobject_line as tl ON tl.fk_myobject = t.rowid';
+		$this->export_sql_end[$r]  =' FROM '.MAIN_DB_PREFIX.'travelpackage as t';
+		//$this->export_sql_end[$r]  =' LEFT JOIN '.MAIN_DB_PREFIX.'travelpackage_line as tl ON tl.fk_travelpackage = t.rowid';
 		$this->export_sql_end[$r] .=' WHERE 1 = 1';
-		$this->export_sql_end[$r] .=' AND t.entity IN ('.getEntity('myobject').')';
+		$this->export_sql_end[$r] .=' AND t.entity IN ('.getEntity('travelpackage').')';
 		$r++; */
 		/* END MODULEBUILDER EXPORT MYOBJECT */
 
@@ -398,27 +444,27 @@ class modEnjoyHolidays extends DolibarrModules
 		/*
 		$langs->load("enjoyholidays@enjoyholidays");
 		$this->import_code[$r]=$this->rights_class.'_'.$r;
-		$this->import_label[$r]='MyObjectLines';	// Translation key (used only if key ExportDataset_xxx_z not found)
-		$this->import_icon[$r]='myobject@enjoyholidays';
-		$this->import_tables_array[$r] = array('t' => MAIN_DB_PREFIX.'enjoyholidays_myobject', 'extra' => MAIN_DB_PREFIX.'enjoyholidays_myobject_extrafields');
+		$this->import_label[$r]='TravelPackageLines';	// Translation key (used only if key ExportDataset_xxx_z not found)
+		$this->import_icon[$r]='travelpackage@enjoyholidays';
+		$this->import_tables_array[$r] = array('t' => MAIN_DB_PREFIX.'enjoyholidays_travelpackage', 'extra' => MAIN_DB_PREFIX.'enjoyholidays_travelpackage_extrafields');
 		$this->import_tables_creator_array[$r] = array('t' => 'fk_user_author'); // Fields to store import user id
 		$import_sample = array();
-		$keyforclass = 'MyObject'; $keyforclassfile='/enjoyholidays/class/myobject.class.php'; $keyforelement='myobject@enjoyholidays';
+		$keyforclass = 'TravelPackage'; $keyforclassfile='/enjoyholidays/class/travelpackage.class.php'; $keyforelement='travelpackage@enjoyholidays';
 		include DOL_DOCUMENT_ROOT.'/core/commonfieldsinimport.inc.php';
 		$import_extrafield_sample = array();
-		$keyforselect='myobject'; $keyforaliasextra='extra'; $keyforelement='myobject@enjoyholidays';
+		$keyforselect='travelpackage'; $keyforaliasextra='extra'; $keyforelement='travelpackage@enjoyholidays';
 		include DOL_DOCUMENT_ROOT.'/core/extrafieldsinimport.inc.php';
-		$this->import_fieldshidden_array[$r] = array('extra.fk_object' => 'lastrowid-'.MAIN_DB_PREFIX.'enjoyholidays_myobject');
+		$this->import_fieldshidden_array[$r] = array('extra.fk_object' => 'lastrowid-'.MAIN_DB_PREFIX.'enjoyholidays_travelpackage');
 		$this->import_regex_array[$r] = array();
 		$this->import_examplevalues_array[$r] = array_merge($import_sample, $import_extrafield_sample);
 		$this->import_updatekeys_array[$r] = array('t.ref' => 'Ref');
 		$this->import_convertvalue_array[$r] = array(
 			't.ref' => array(
 				'rule'=>'getrefifauto',
-				'class'=>(!getDolGlobalString('ENJOYHOLIDAYS_MYOBJECT_ADDON') ? 'mod_myobject_standard' : getDolGlobalString('ENJOYHOLIDAYS_MYOBJECT_ADDON')),
-				'path'=>"/core/modules/commande/".(!getDolGlobalString('ENJOYHOLIDAYS_MYOBJECT_ADDON') ? 'mod_myobject_standard' : getDolGlobalString('ENJOYHOLIDAYS_MYOBJECT_ADDON')).'.php'
-				'classobject'=>'MyObject',
-				'pathobject'=>'/enjoyholidays/class/myobject.class.php',
+				'class'=>(!getDolGlobalString('ENJOYHOLIDAYS_MYOBJECT_ADDON') ? 'mod_travelpackage_standard' : getDolGlobalString('ENJOYHOLIDAYS_MYOBJECT_ADDON')),
+				'path'=>"/core/modules/commande/".(!getDolGlobalString('ENJOYHOLIDAYS_MYOBJECT_ADDON') ? 'mod_travelpackage_standard' : getDolGlobalString('ENJOYHOLIDAYS_MYOBJECT_ADDON')).'.php'
+				'classobject'=>'TravelPackage',
+				'pathobject'=>'/enjoyholidays/class/travelpackage.class.php',
 			),
 			't.fk_soc' => array('rule' => 'fetchidfromref', 'file' => '/societe/class/societe.class.php', 'class' => 'Societe', 'method' => 'fetch', 'element' => 'ThirdParty'),
 			't.fk_user_valid' => array('rule' => 'fetchidfromref', 'file' => '/user/class/user.class.php', 'class' => 'User', 'method' => 'fetch', 'element' => 'user'),
@@ -464,16 +510,16 @@ class modEnjoyHolidays extends DolibarrModules
 		// Document templates
 		$moduledir = dol_sanitizeFileName('enjoyholidays');
 		$myTmpObjects = array();
-		$myTmpObjects['MyObject'] = array('includerefgeneration'=>0, 'includedocgeneration'=>0);
+		$myTmpObjects['TravelPackage'] = array('includerefgeneration'=>0, 'includedocgeneration'=>0);
 
 		foreach ($myTmpObjects as $myTmpObjectKey => $myTmpObjectArray) {
-			if ($myTmpObjectKey == 'MyObject') {
+			if ($myTmpObjectKey == 'TravelPackage') {
 				continue;
 			}
 			if ($myTmpObjectArray['includerefgeneration']) {
-				$src = DOL_DOCUMENT_ROOT.'/install/doctemplates/'.$moduledir.'/template_myobjects.odt';
+				$src = DOL_DOCUMENT_ROOT.'/install/doctemplates/'.$moduledir.'/template_travelpackages.odt';
 				$dirodt = DOL_DATA_ROOT.'/doctemplates/'.$moduledir;
-				$dest = $dirodt.'/template_myobjects.odt';
+				$dest = $dirodt.'/template_travelpackages.odt';
 
 				if (file_exists($src) && !file_exists($dest)) {
 					require_once DOL_DOCUMENT_ROOT.'/core/lib/files.lib.php';
