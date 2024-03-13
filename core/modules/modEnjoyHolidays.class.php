@@ -229,7 +229,19 @@ class modEnjoyHolidays extends DolibarrModules
 		 );
 		 */
 		/* BEGIN MODULEBUILDER DICTIONARIES */
-		$this->dictionaries = array();
+		$this->dictionaries=array(
+			'langs'=>'enjoyholidays@enjoyholidays',
+			'tabname'=>array('c_destinationcountry'),
+			'tablib'=>array('DestinationCountry'),
+			'tabsql'=>array('SELECT f.rowid as rowid, f.code, f.label, f.active FROM llx_c_destinationcountry as f'),
+			'tabsqlsort'=>array('label ASC'),
+			'tabfield'=>array('code,label'),
+			'tabfieldvalue'=>array('code,label'),
+			'tabfieldinsert'=>array('code,label'),
+			'tabrowid'=>array('rowid'),
+			'tabcond'=>array(isModEnabled('enjoyholidays')),
+			'tabhelp'=>array(array('code'=>$langs->trans('CodeTooltipHelp'), 'field2' => 'field2tooltip')),
+		);
 		/* END MODULEBUILDER DICTIONARIES */
 
 		// Boxes/Widgets
