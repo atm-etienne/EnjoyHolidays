@@ -231,16 +231,16 @@ class modEnjoyHolidays extends DolibarrModules
 		/* BEGIN MODULEBUILDER DICTIONARIES */
 		$this->dictionaries=array(
 			'langs'=>'enjoyholidays@enjoyholidays',
-			'tabname'=>array('c_destinationcountry'),
-			'tablib'=>array('DestinationCountry'),
-			'tabsql'=>array('SELECT f.rowid as rowid, f.code, f.label, f.active FROM llx_c_destinationcountry as f'),
-			'tabsqlsort'=>array('label ASC'),
-			'tabfield'=>array('code,label'),
-			'tabfieldvalue'=>array('code,label'),
-			'tabfieldinsert'=>array('code,label'),
-			'tabrowid'=>array('rowid'),
-			'tabcond'=>array(isModEnabled('enjoyholidays')),
-			'tabhelp'=>array(array('code'=>$langs->trans('CodeTooltipHelp'), 'field2' => 'field2tooltip')),
+			'tabname'=>array('c_destinationcountry','c_transportmean'),
+			'tablib'=>array('DestinationCountry','TransportMean'),
+			'tabsql'=>array('SELECT f.rowid as rowid, f.code, f.label, f.active FROM llx_c_destinationcountry as f','SELECT f.rowid as rowid, f.code, f.label, f.active FROM llx_c_transportmean as f'),
+			'tabsqlsort'=>array('label ASC','label ASC'),
+			'tabfield'=>array('code,label','code,label'),
+			'tabfieldvalue'=>array('code,label','code,label'),
+			'tabfieldinsert'=>array('code,label','code,label'),
+			'tabrowid'=>array('rowid','rowid'),
+			'tabcond'=>array(isModEnabled('enjoyholidays'),isModEnabled('enjoyholidays')),
+			'tabhelp'=>array(array('code'=>$langs->trans('CodeTooltipHelp'), 'field2' => 'field2tooltip'),array('code'=>$langs->trans('CodeTooltipHelp'), 'field2' => 'field2tooltip')),
 		);
 		/* END MODULEBUILDER DICTIONARIES */
 
