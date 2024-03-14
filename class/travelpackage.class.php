@@ -121,6 +121,7 @@ class TravelPackage extends CommonObject
 		"travelDepartureDate" => array("type"=>"datetime", "label"=>"TravelDepartureDate", "enabled"=>"1", 'position'=>50, 'notnull'=>0, "visible"=>"1",),
 		"travelBackDate" => array("type"=>"datetime", "label"=>"TravelBackDate", "enabled"=>"1", 'position'=>50, 'notnull'=>0, "visible"=>"1",),
 		"status" => array("type"=>"integer", "label"=>"Status", "enabled"=>"1", 'position'=>50, 'notnull'=>1, "visible"=>"0", "default"=>"0",),
+		"transportMean" => array("type"=>"integer:ctransportmean:custom/enjoyholidays/class/ctransportmean.class.php", "label"=>"TransportMean", "enabled"=>"1", 'position'=>50, 'notnull'=>0, "visible"=>"1",),
 	);
 	public $rowid;
 	public $ref;
@@ -130,6 +131,7 @@ class TravelPackage extends CommonObject
 	public $travelDepartureDate;
 	public $travelBackDate;
 	public $status;
+	public $transportMean;
 	// END MODULEBUILDER PROPERTIES
 
 
