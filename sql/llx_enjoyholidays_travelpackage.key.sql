@@ -17,6 +17,7 @@
 -- BEGIN MODULEBUILDER INDEXES
 ALTER TABLE llx_enjoyholidays_travelpackage ADD INDEX idx_enjoyholidays_travelpackage_rowid (rowid);
 ALTER TABLE llx_enjoyholidays_travelpackage ADD INDEX idx_enjoyholidays_travelpackage_ref (ref);
+ALTER TABLE llx_enjoyholidays_travelpackage ADD INDEX idx_enjoyholidays_travelpackage_status (status);
 -- END MODULEBUILDER INDEXES
 
 --ALTER TABLE llx_enjoyholidays_travelpackage ADD UNIQUE INDEX uk_enjoyholidays_travelpackage_fieldxy(fieldx, fieldy);

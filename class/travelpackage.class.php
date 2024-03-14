@@ -120,8 +120,15 @@ class TravelPackage extends CommonObject
 		"amount" => array("type"=>"price", "label"=>"Amount", "enabled"=>"1", 'position'=>40, 'notnull'=>0, "visible"=>"1", "default"=>"null", "isameasure"=>"1", "help"=>"Help text for amount", "validate"=>"1",),
 		"travelDepartureDate" => array("type"=>"datetime", "label"=>"TravelDepartureDate", "enabled"=>"1", 'position'=>50, 'notnull'=>0, "visible"=>"1",),
 		"travelBackDate" => array("type"=>"datetime", "label"=>"TravelBackDate", "enabled"=>"1", 'position'=>50, 'notnull'=>0, "visible"=>"1",),
-		"status" => array("type"=>"integer", "label"=>"Status", "enabled"=>"1", 'position'=>50, 'notnull'=>1, "visible"=>"0", "default"=>"0",),
 		"transportMean" => array("type"=>"integer:ctransportmean:custom/enjoyholidays/class/ctransportmean.class.php", "label"=>"TransportMean", "enabled"=>"1", 'position'=>50, 'notnull'=>0, "visible"=>"1",),
+		"date_creation" => array("type"=>"datetime", "label"=>"DateCreation", "enabled"=>"1", 'position'=>500, 'notnull'=>1, "visible"=>"-2",),
+		"tms" => array("type"=>"timestamp", "label"=>"DateModification", "enabled"=>"1", 'position'=>501, 'notnull'=>0, "visible"=>"-2",),
+		"fk_user_creat" => array("type"=>"integer:User:user/class/user.class.php", "label"=>"UserAuthor", "picto"=>"user", "enabled"=>"1", 'position'=>510, 'notnull'=>1, "visible"=>"-2", "csslist"=>"tdoverflowmax150",),
+		"fk_user_modif" => array("type"=>"integer:User:user/class/user.class.php", "label"=>"UserModif", "picto"=>"user", "enabled"=>"1", 'position'=>511, 'notnull'=>-1, "visible"=>"-2", "csslist"=>"tdoverflowmax150",),
+		"last_main_doc" => array("type"=>"varchar(255)", "label"=>"LastMainDoc", "enabled"=>"1", 'position'=>600, 'notnull'=>0, "visible"=>"0",),
+		"import_key" => array("type"=>"varchar(14)", "label"=>"ImportId", "enabled"=>"1", 'position'=>1000, 'notnull'=>-1, "visible"=>"-2",),
+		"model_pdf" => array("type"=>"varchar(255)", "label"=>"Model pdf", "enabled"=>"1", 'position'=>1010, 'notnull'=>-1, "visible"=>"0",),
+		"status" => array("type"=>"integer", "label"=>"Status", "enabled"=>"1", 'position'=>2000, 'notnull'=>1, "visible"=>"-2", "index"=>"1", "arrayofkeyval"=>array("0" => "Brouillon", "1" => "Valid&eacute;", "9" => "Annul&eacute;"), "validate"=>"1",),
 	);
 	public $rowid;
 	public $ref;
@@ -130,8 +137,15 @@ class TravelPackage extends CommonObject
 	public $amount;
 	public $travelDepartureDate;
 	public $travelBackDate;
-	public $status;
 	public $transportMean;
+	public $date_creation;
+	public $tms;
+	public $fk_user_creat;
+	public $fk_user_modif;
+	public $last_main_doc;
+	public $import_key;
+	public $model_pdf;
+	public $status;
 	// END MODULEBUILDER PROPERTIES
 
 
