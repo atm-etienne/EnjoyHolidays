@@ -20,7 +20,7 @@ ALTER TABLE llx_enjoyholidays_travelpackage ADD INDEX idx_enjoyholidays_travelpa
 ALTER TABLE llx_enjoyholidays_travelpackage ADD INDEX idx_enjoyholidays_travelpackage_status (status);
 -- END MODULEBUILDER INDEXES
 
---ALTER TABLE llx_enjoyholidays_travelpackage ADD UNIQUE INDEX uk_enjoyholidays_travelpackage_fieldxy(fieldx, fieldy);
+-- ALTER TABLE llx_enjoyholidays_travelpackage ADD UNIQUE INDEX uk_enjoyholidays_travelpackage_fieldxy(fieldx, fieldy);
 
---ALTER TABLE llx_enjoyholidays_travelpackage ADD CONSTRAINT llx_enjoyholidays_travelpackage_fk_field FOREIGN KEY (fk_field) REFERENCES llx_enjoyholidays_myotherobject(rowid);
-
+-- ALTER TABLE llx_enjoyholidays_travelpackage ADD CONSTRAINT llx_enjoyholidays_travelpackage_fk_field FOREIGN KEY (fk_field) REFERENCES llx_enjoyholidays_myotherobject(rowid);
+ALTER TABLE llx_enjoyholidays_travelpackage ADD CONSTRAINT llx_enjoyholidays_travelpackage_uk_ref UNIQUE (ref);
