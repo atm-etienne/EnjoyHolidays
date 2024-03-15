@@ -1217,4 +1217,28 @@ class TravelPackage extends CommonObject
 
 		return $error;
 	}
+
+	/**
+	 * Returns boolean according to fields validation
+	 *
+	 * @return boolean				True for valid fields or False for not valid fields
+	 */
+	public function areFieldsValid() {
+		global $langs;
+
+		$fieldsError = [];
+
+		if (strlen(trim($this->label)) < 5) {
+			$fieldsError[] = "ErrorTravelPackageLabelMinLength";
+		}
+
+		if (sizeof($fieldsError)) {
+			foreach ($fieldsError as $fieldError) {
+				$this->errors[] = $langs->trans($fieldError);
+			}
+			return false;
+		}
+
+		return true;
+	}
 }
