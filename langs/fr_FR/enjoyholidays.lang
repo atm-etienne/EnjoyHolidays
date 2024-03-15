@@ -21,45 +21,45 @@
 ModuleEnjoyHolidaysName = EnjoyHolidays
 # Module description 'ModuleEnjoyHolidaysDesc'
 ModuleEnjoyHolidaysDesc = EnjoyHolidays description
-TravelPackage = Travel Package
-TravelPackages = Travel Packages
-ListTravelPackage = List
-NewTravelPackage = New Travel Package
+TravelPackage = Formule de voyage
+TravelPackages = Formules de voyage
+ListTravelPackage = Liste
+NewTravelPackage = Nouvelle formule de voyage
 
 
 #
 # Fields
 #
-DestinationCountry = Destination country
-TravelDepartureDate = Travel departure
-TravelBackDate = Travel back
-TransportMean = Transport mean
+DestinationCountry = Pays de destination
+TravelDepartureDate = Départ
+TravelBackDate = Retour
+TransportMean = Moyen de transport
 
 #
 # Admin page
 #
-EnjoyHolidaysSetup = EnjoyHolidays setup
-Settings = Settings
-EnjoyHolidaysSetupPage = EnjoyHolidays setup page
+EnjoyHolidaysSetup = Paramètres de EnjoyHolidays
+Settings = Paramètres
+EnjoyHolidaysSetupPage = Page de paramètres EnjoyHolidays
 
 
 #
 # About page
 #
-About = About
-EnjoyHolidaysAbout = About EnjoyHolidays
-EnjoyHolidaysAboutPage = EnjoyHolidays about page
+About = A propos
+EnjoyHolidaysAbout = A propos de EnjoyHolidays
+EnjoyHolidaysAboutPage = Page à propos de EnjoyHolidays
 
 #
 # Sample page
 #
-EnjoyHolidaysArea = Home EnjoyHolidays
+EnjoyHolidaysArea = Accueil EnjoyHolidays
 
 #
 # TransportMean dictionary
 #
-Plane = Plane
-Boat = Boat
+Plane = Avion
+Boat = Bateau
 Bus = Bus
 Train = Train
 
@@ -68,4 +68,4 @@ Train = Train
 #
 # Errors
 #
-ErrorTravelPackageAlreadyExists = A travel package already exists with the given reference
+ErrorTravelPackageAlreadyExists = Une formule de voyage est déjà existante avec cette référence
