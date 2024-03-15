@@ -291,7 +291,9 @@ class TravelPackage extends CommonObject
 		// Reset some properties
 		unset($object->id);
 		unset($object->fk_user_creat);
-		unset($object->import_key);
+		if ($object->import_key) {
+			unset($object->import_key);
+		}
 
 		// Clear fields
 		if (property_exists($object, 'ref')) {
