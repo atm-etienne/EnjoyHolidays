@@ -252,7 +252,7 @@ class TravelPackage extends CommonObject
 				$error++;
 				$this->error = $langs->trans("ErrorTravelPackageAlreadyExists");
 				dol_syslog(get_class($this)."::Create fails, ref ".$this->ref." already exists");
-				return -3;
+				return -4;
 			}
 		} else {
 			$this->error = $this->db->lasterror();
