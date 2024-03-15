@@ -244,9 +244,9 @@ class TravelPackage extends CommonObject
 		$sql .= " WHERE ref = '".$this->db->escape($this->ref)."'";
 
 
-		$result = $this->db->query($sql);
-		if ($result) {
-			$obj = $this->db->fetch_object($result);
+		$resql = $this->db->query($sql);
+		if ($resql) {
+			$obj = $this->db->fetch_object($resql);
 			if ($obj->nb != 0) {
 				$langs->load('travelPackage');
 				$error++;
