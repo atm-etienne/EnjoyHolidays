@@ -123,6 +123,7 @@ class modEnjoyHolidays extends DolibarrModules
 			),
 			// Set this to 1 if features of module are opened to external users
 			'moduleforexternal' => 0,
+			'contactelement'	=> array('travelpackage'=>'travelpackage')
 		);
 
 		// Data directories to create when module is enabled.
