@@ -2,6 +2,7 @@
 
 > ## Release 1.2.0
 
+- ```1.2.2``` Fix: Disable option to select a deactivated transport mean or country
 - ```1.2.1``` Fix: Add errors translation
 - ```1.2.0``` New: ajout des traductions suivantes:
   - Anglais
