@@ -395,7 +395,7 @@ class modEnjoyHolidays extends DolibarrModules
         $this->menu[$r++]=array(
             'fk_menu'=>'fk_mainmenu=enjoyholidays,fk_leftmenu=travelpackage',
             'type'=>'left',
-            'titre'=>'List TravelPackage',
+            'titre'=>'ListTravelPackage',
             'mainmenu'=>'enjoyholidays',
             'leftmenu'=>'enjoyholidays_travelpackage_list',
             'url'=>'/enjoyholidays/travelpackage_list.php',
@@ -409,7 +409,7 @@ class modEnjoyHolidays extends DolibarrModules
         $this->menu[$r++]=array(
             'fk_menu'=>'fk_mainmenu=enjoyholidays,fk_leftmenu=travelpackage',
             'type'=>'left',
-            'titre'=>'New TravelPackage',
+            'titre'=>'NewTravelPackage',
             'mainmenu'=>'enjoyholidays',
             'leftmenu'=>'enjoyholidays_travelpackage_new',
             'url'=>'/enjoyholidays/travelpackage_card.php?action=create',

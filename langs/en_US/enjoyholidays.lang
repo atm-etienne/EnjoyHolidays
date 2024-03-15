@@ -21,6 +21,19 @@
 ModuleEnjoyHolidaysName = EnjoyHolidays
 # Module description 'ModuleEnjoyHolidaysDesc'
 ModuleEnjoyHolidaysDesc = EnjoyHolidays description
+TravelPackage = Travel Package
+TravelPackages = Travel Packages
+ListTravelPackage = List
+NewTravelPackage = New Travel Package
+
+
+#
+# Fields
+#
+DestinationCountry = Destination country
+TravelDepartureDate = Travel departure
+TravelBackDate = Travel back
+TransportMean = Transport mean
 
 #
 # Admin page
@@ -28,10 +41,6 @@ ModuleEnjoyHolidaysDesc = EnjoyHolidays description
 EnjoyHolidaysSetup = EnjoyHolidays setup
 Settings = Settings
 EnjoyHolidaysSetupPage = EnjoyHolidays setup page
-ENJOYHOLIDAYS_MYPARAM1 = My param 1
-ENJOYHOLIDAYS_MYPARAM1Tooltip = My param 1 tooltip
-ENJOYHOLIDAYS_MYPARAM2=My param 2
-ENJOYHOLIDAYS_MYPARAM2Tooltip=My param 2 tooltip
 
 
 #
@@ -45,10 +54,5 @@ EnjoyHolidaysAboutPage = EnjoyHolidays about page
 # Sample page
 #
 EnjoyHolidaysArea = Home EnjoyHolidays
-MyPageName = My page name
 
-#
-# Sample widget
-#
-MyWidget = My widget
-MyWidgetDescription = My widget description
+

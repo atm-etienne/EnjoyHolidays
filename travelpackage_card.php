@@ -234,7 +234,7 @@ $formproject = new FormProjets($db);
 $title = $langs->trans("TravelPackage")." - ".$langs->trans('Card');
 //$title = $object->ref." - ".$langs->trans('Card');
 if ($action == 'create') {
-	$title = $langs->trans("NewObject", $langs->transnoentitiesnoconv("TravelPackage"));
+	$title = $langs->trans("NewTravelPackage");
 }
 $help_url = '';
 
