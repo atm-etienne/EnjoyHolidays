@@ -239,24 +239,18 @@ class TravelPackage extends CommonObject
 
 		$error = 0;
 
-		$sql = "SELECT count(*) as nb";
+		$sql = "SELECT rowid";
 		$sql .= " FROM ".$this->db->prefix()."enjoyholidays_travelpackage";
 		$sql .= " WHERE ref = '".$this->db->escape($this->ref)."'";
+		$sql .= " LIMIT 1";
 
 
 		$resql = $this->db->query($sql);
-		if ($resql) {
-			$obj = $this->db->fetch_object($resql);
-			if ($obj->nb != 0) {
+		if ($this->db->num_rows($resql)) {
 				$langs->load('travelPackage');
-				$error++;
 				$this->error = $langs->trans("ErrorTravelPackageAlreadyExists");
 				dol_syslog(get_class($this)."::Create fails, ref ".$this->ref." already exists");
 				return -4;
-			}
-		} else {
-			$this->error = $this->db->lasterror();
-			return -3;
 		}
 
 		$resultcreate = $this->createCommon($user, $notrigger);
