@@ -58,8 +58,8 @@ EnjoyHolidaysArea = Home EnjoyHolidays
 #
 # TransportMean dictionary
 #
-Avion = Plane
-Bateau = Boat
+Plane = Plane
+Boat = Boat
 Bus = Bus
 Train = Train
 
