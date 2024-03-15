@@ -512,6 +512,12 @@ class TravelPackage extends CommonObject
 	 */
 	public function update(User $user, $notrigger = false)
 	{
+		$fieldsAreValid = $this->areFieldsValid();
+
+		if (!$fieldsAreValid) {
+			return -1;
+		}
+
 		return $this->updateCommon($user, $notrigger);
 	}
 
