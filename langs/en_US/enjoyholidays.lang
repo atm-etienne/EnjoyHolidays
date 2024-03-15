@@ -69,3 +69,4 @@ Train = Train
 # Errors
 #
 ErrorTravelPackageAlreadyExists = A travel package already exists with the given reference
+ErrorTravelPackageLabelMinLength = Label must have at least 5 chars
