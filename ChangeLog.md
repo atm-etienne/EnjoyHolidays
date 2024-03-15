@@ -1,5 +1,10 @@
 # CHANGELOG ENJOYHOLIDAYS FOR [DOLIBARR ERP CRM](https://www.dolibarr.org)
 
+## Release 1.2.0
+- New: ajout des traductions suivantes:
+  - Anglais
+  - Français
+
 ## Release 1.1.0
 - New: ajout de l'objet TravelPackage, avec son CRUD
 

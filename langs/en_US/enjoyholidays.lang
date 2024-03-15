@@ -55,4 +55,10 @@ EnjoyHolidaysAboutPage = EnjoyHolidays about page
 #
 EnjoyHolidaysArea = Home EnjoyHolidays
 
-
+#
+# TransportMean dictionary
+#
+Avion = Plane
+Bateau = Boat
+Bus = Bus
+Train = Train
