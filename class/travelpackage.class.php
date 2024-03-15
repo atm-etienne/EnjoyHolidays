@@ -237,7 +237,11 @@ class TravelPackage extends CommonObject
 	{
 		global $langs;
 
-		$error = 0;
+		$fieldsAreValid = $this->areFieldsValid();
+
+		if (!$fieldsAreValid) {
+			return -1;
+		}
 
 		$sql = "SELECT rowid";
 		$sql .= " FROM ".$this->db->prefix()."enjoyholidays_travelpackage";
@@ -247,10 +251,8 @@ class TravelPackage extends CommonObject
 
 		$resql = $this->db->query($sql);
 		if ($this->db->num_rows($resql)) {
-				$langs->load('travelPackage');
 				$this->error = $langs->trans("ErrorTravelPackageAlreadyExists");
-				dol_syslog(get_class($this)."::Create fails, ref ".$this->ref." already exists");
-				return -4;
+				return -2;
 		}
 
 		$resultcreate = $this->createCommon($user, $notrigger);
