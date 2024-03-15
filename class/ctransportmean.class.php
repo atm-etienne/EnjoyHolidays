@@ -26,7 +26,7 @@ require_once DOL_DOCUMENT_ROOT.'/core/class/commondict.class.php';
 
 
 /**
- * 	Class to manage dictionary Countries (used by imports)
+ * 	Class to manage dictionary Transports means (used by imports)
  */
 class CtransportMean extends CommonDict
 {
