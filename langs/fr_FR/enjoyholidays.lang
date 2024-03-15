@@ -62,3 +62,10 @@ Avion = Avion
 Bateau = Bateau
 Bus = Bus
 Train = Train
+
+
+
+#
+# Errors
+#
+ErrorTravelPackageAlreadyExists = Une formule de voyage est déjà existante avec cette référence
