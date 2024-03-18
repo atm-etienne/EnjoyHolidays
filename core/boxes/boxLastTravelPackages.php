@@ -39,7 +39,7 @@ class boxLastTravelPackages extends ModeleBoxes
 	/**
 	 * @var string Alphanumeric ID. Populated by the constructor.
 	 */
-	public $boxcode = "enjoyholidaysbox";
+	public $boxcode = "enjoyholidaysboxlasttravelpackages";
 
 	/**
 	 * @var string Box icon (in configuration page)
@@ -115,12 +115,10 @@ class boxLastTravelPackages extends ModeleBoxes
 	 */
 	public function loadBox($max = 5)
 	{
-		global $langs;
+		global $langs, $user, $db;
 
 		// Use configuration value for max lines count
 		$this->max = $max;
-
-		//dol_include_once("/enjoyholidays/class/enjoyholidays.class.php");
 
 		// Populate the head at runtime
 		$text = $langs->trans("EnjoyHolidaysBoxDescription", $max);
@@ -128,9 +126,9 @@ class boxLastTravelPackages extends ModeleBoxes
 			// Title text
 			'text' => $text,
 			// Add a link
-			'sublink' => 'http://example.com',
+			'sublink' => '',
 			// Sublink icon placed after the text
-			'subpicto' => 'object_enjoyholidays@enjoyholidays',
+			'subpicto' => '',
 			// Sublink icon HTML alt text
 			'subtext' => '',
 			// Sublink HTML target
@@ -143,6 +141,73 @@ class boxLastTravelPackages extends ModeleBoxes
 			'graph' => false
 		);
 
+		dol_include_once("/enjoyholidays/class/travelpackage.class.php");
+
+		$travelPackage = new TravelPackage($db);
+
+		if ($user->hasRight('enjoyholidays', 'travelpackage', 'read')) {
+			$sql = "SELECT t.rowid, t.ref, t.label, t.amount";
+			$sql .= " FROM ".MAIN_DB_PREFIX."enjoyholidays_travelpackage t";
+			$sql .= " ORDER BY t.date_creation DESC";
+			$sql .= " LIMIT ". $this->max;
+
+			$resql = $this->db->query($sql);
+			if ($resql) {
+				$num = $this->db->num_rows($resql);
+
+				$line = 0;
+
+				while ($line < $num) {
+					$objp = $this->db->fetch_object($resql);
+
+					$travelPackage->id = $objp->rowid;
+					$travelPackage->ref = $objp->ref;
+					$travelPackage->label = $objp->label;
+					$travelPackage->amount = $objp->amount;
+
+					$this->info_box_contents[$line][] = array(
+						'td' => 'class="nowraponall"',
+						'text' => $travelPackage->getNomUrl(1),
+						'asis' => 1,
+					);
+
+					$this->info_box_contents[$line][] = array(
+						'td' => 'class="tdoverflowmax150 maxwidth150onsmartphone"',
+						'text' => $travelPackage->label,
+						'asis' => 1,
+					);
+
+					$this->info_box_contents[$line][] = array(
+						'td' => 'class="nowraponall right amount"',
+						'text' => price($objp->amount),
+					);
+
+					$line++;
+				}
+
+				if ($num == 0) {
+					$this->info_box_contents[$line][0] = array(
+						'td' => 'class="center"',
+						'text'=> '<span class="opacitymedium">'.$langs->trans("NoRecordsTravelPackage").'</span>'
+					);
+				}
+
+				$this->db->free($resql);
+			} else {
+				$this->info_box_contents[0][0] = array(
+					'td' => '',
+					'maxlength'=>500,
+					'text' => ($this->db->error().' sql='.$sql),
+				);
+			}
+		} else {
+			$this->info_box_contents[0][0] = array(
+				'td' => 'class="nohover left"',
+				'text' => '<span class="opacitymedium">'.$langs->trans("ReadPermissionNotAllowed").'</span>'
+			);
+		}
+
+		/*
 		// Populate the contents at runtime
 		$this->info_box_contents = array(
 			0 => array( // First line
@@ -199,7 +264,7 @@ class boxLastTravelPackages extends ModeleBoxes
 					'text' => ''
 				)
 			),
-		);
+		);*/
 	}
 
 	/**
