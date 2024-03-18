@@ -26,6 +26,9 @@ TravelPackages = Formules de voyage
 ListTravelPackage = Liste
 NewTravelPackage = Nouvelle formule de voyage
 
+TravelPackageReadRight = Peut lire les informations des formules de voyage
+TravelPackageWriteRight = Peut créer ou modifier des formules de voyage
+TravelPackageDeleteRight = Peut supprimer des formules de voyage
 
 #
 # Fields
