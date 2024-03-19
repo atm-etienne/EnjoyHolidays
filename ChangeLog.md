@@ -1,5 +1,9 @@
 # CHANGELOG ENJOYHOLIDAYS FOR [DOLIBARR ERP CRM](https://www.dolibarr.org)
 
+## Release 1.4
+
+- NEW: Create box to display latest travel packages
+
 ## Release 1.3
 
 - NEW: Enable rights check for travel packages 
