@@ -26,6 +26,8 @@ TravelPackages = Travel Packages
 ListTravelPackage = List
 NewTravelPackage = New Travel Package
 
+NoRecordsTravelPackage = No recorded travel package
+
 TravelPackageReadRight = Read travel packages information
 TravelPackageWriteRight = Create and Update travel packages
 TravelPackageDeleteRight = Delete travel packages
@@ -75,6 +77,11 @@ Bus = Bus
 Train = Train
 
 
+#
+# Boxes
+#
+BoxLatestTravelPackages = Widget to display latest 5 travel packages
+BoxLatestTravelPackagesDescription = Latest travel packages
 
 #
 # Errors

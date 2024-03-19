@@ -72,7 +72,7 @@ class modEnjoyHolidays extends DolibarrModules
 		$this->editor_url = '';
 
 		// Possible values for version are: 'development', 'experimental', 'dolibarr', 'dolibarr_deprecated', 'experimental_deprecated' or a version string like 'x.y.z'
-		$this->version = '1.3.0';
+		$this->version = '1.4.0';
 		// Url to the file with your last numberversion of this module
 		//$this->url_last_version = 'http://www.example.com/versionmodule.txt';
 
@@ -286,12 +286,11 @@ class modEnjoyHolidays extends DolibarrModules
 		// Add here list of php file(s) stored in enjoyholidays/core/boxes that contains a class to show a widget.
 		/* BEGIN MODULEBUILDER WIDGETS */
 		$this->boxes = array(
-			//  0 => array(
-			//      'file' => 'enjoyholidayswidget1.php@enjoyholidays',
-			//      'note' => 'Widget provided by EnjoyHolidays',
-			//      'enabledbydefaulton' => 'Home',
-			//  ),
-			//  ...
+			  0 => array(
+			      'file' => 'boxLastTravelPackages.php@enjoyholidays',
+			      'note' => 'Widget to display latest 5 travel packages', // Can not translate this value
+			      'enabledbydefaulton' => 'Home',
+			  ),
 		);
 		/* END MODULEBUILDER WIDGETS */
 
