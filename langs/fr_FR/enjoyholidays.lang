@@ -30,6 +30,7 @@ TravelPackageReadRight = Peut lire les informations des formules de voyage
 TravelPackageWriteRight = Peut créer ou modifier des formules de voyage
 TravelPackageDeleteRight = Peut supprimer des formules de voyage
 
+
 #
 # Fields
 #
@@ -39,11 +40,18 @@ TravelBackDate = Retour
 TransportMean = Moyen de transport
 
 #
+# Help text
+#
+HelpTextAmount = Laisser vide pour remplir le montant avec la valeur définie par défaut
+DefaultTravelPackagePriceHelp = Prix utilisé pour la formule de voyage, lorsque le pays n'en a pas
+
+#
 # Admin page
 #
 EnjoyHolidaysSetup = Paramètres de EnjoyHolidays
 Settings = Paramètres
 EnjoyHolidaysSetupPage = Page de paramètres EnjoyHolidays
+ENJOYHOLIDAYS_DEFAULT_TRAVEL_PRICE = Prix par défaut pour les formules de voyage
 
 
 #
