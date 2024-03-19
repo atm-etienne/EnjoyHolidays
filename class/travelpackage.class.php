@@ -239,6 +239,10 @@ class TravelPackage extends CommonObject
 
 		$fieldsAreValid = $this->areFieldsValid();
 
+		if (!$this->amount) {
+			$this->setDefaultAmount();
+		}
+
 		if (!$fieldsAreValid) {
 			return -1;
 		}
@@ -1248,5 +1252,30 @@ class TravelPackage extends CommonObject
 		}
 
 		return true;
+	}
+
+	/**
+	 * Set the amount with default value
+	 * According to the DefaultTravelPrice dictionary - get the default price of the selected country if it has
+	 * Otherwise, get the default value set in the module configuration
+	 *
+	 * @return void
+	 */
+	public function setDefaultAmount()
+	{
+		global $conf;
+		$defaultConfValue = $conf->global->ENJOYHOLIDAYS_DEFAULT_TRAVEL_PRICE;
+
+		$sql = "SELECT amount";
+		$sql .= " FROM ".$this->db->prefix()."c_default_travel_price";
+		$sql .= " WHERE fk_country = '".$this->db->escape($this->destinationCountry)."'";
+
+		$resql = $this->db->query($sql);
+		if ($this->db->num_rows($resql)) {
+			$obj = $this->db->fetch_object($resql);
+			$this->amount = $obj->amount;
+		} else {
+			$this->amount = $defaultConfValue;
+		}
 	}
 }
