@@ -28,6 +28,10 @@ NewTravelPackage = Nouvelle formule de voyage
 
 NoRecordsTravelPackage = Aucune formule de voyage enregistrée
 
+TravelPackageReadRight = Peut lire les informations des formules de voyage
+TravelPackageWriteRight = Peut créer ou modifier des formules de voyage
+TravelPackageDeleteRight = Peut supprimer des formules de voyage
+
 #
 # Fields
 #
