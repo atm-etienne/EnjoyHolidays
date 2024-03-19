@@ -2,11 +2,11 @@
 
 ## Release 1.4
 
-- NEW: Create box to display latest travel packages
+- NEW: Create box to display latest travel packages - *2024-03-19* 1.4
 
 ## Release 1.3
 
-- NEW: Enable rights check for travel packages 
+- NEW: Enable rights check for travel packages - *2024-03-18* 1.3
 
 ## Release 1.2
 
