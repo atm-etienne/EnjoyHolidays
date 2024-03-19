@@ -1,5 +1,11 @@
 # CHANGELOG ENJOYHOLIDAYS FOR [DOLIBARR ERP CRM](https://www.dolibarr.org)
 
+## Release 1.5
+
+- NEW: Create a new module conf to set a default amount for travel packages - *2024-03-19* 1.5
+  - Create a new dictionary to define a default amount for each country
+  - Set new travel package amount with a default one if no one is given
+
 ## Release 1.4
 
 - NEW: Create box to display latest travel packages - *2024-03-19* 1.4
