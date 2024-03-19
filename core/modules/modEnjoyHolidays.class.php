@@ -251,7 +251,7 @@ class modEnjoyHolidays extends DolibarrModules
 		$this->boxes = array(
 			  0 => array(
 			      'file' => 'boxLastTravelPackages.php@enjoyholidays',
-			      'note' => 'Widget to display latest 5 travel packages',
+			      'note' => 'Widget to display latest 5 travel packages', // Can not translate this value
 			      'enabledbydefaulton' => 'Home',
 			  ),
 		);

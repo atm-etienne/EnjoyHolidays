@@ -97,7 +97,7 @@ class boxLastTravelPackages extends ModeleBoxes
 
 		parent::__construct($db, $param);
 
-		$this->boxlabel = $langs->transnoentitiesnoconv("MyWidget");
+		$this->boxlabel = $langs->transnoentitiesnoconv("BoxLatestTravelPackagesDescription");
 
 		$this->param = $param;
 
@@ -121,7 +121,7 @@ class boxLastTravelPackages extends ModeleBoxes
 		$this->max = $max;
 
 		// Populate the head at runtime
-		$text = $langs->trans("EnjoyHolidaysBoxDescription", $max);
+		$text = $langs->trans("BoxLatestTravelPackagesDescription", $max);
 		$this->info_box_head = array(
 			// Title text
 			'text' => $text,
