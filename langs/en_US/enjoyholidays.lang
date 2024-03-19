@@ -26,6 +26,10 @@ TravelPackages = Travel Packages
 ListTravelPackage = List
 NewTravelPackage = New Travel Package
 
+TravelPackageReadRight = Read travel packages information
+TravelPackageWriteRight = Create and Update travel packages
+TravelPackageDeleteRight = Delete travel packages
+
 
 #
 # Fields

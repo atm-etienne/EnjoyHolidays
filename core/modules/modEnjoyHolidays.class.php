@@ -72,7 +72,7 @@ class modEnjoyHolidays extends DolibarrModules
 		$this->editor_url = '';
 
 		// Possible values for version are: 'development', 'experimental', 'dolibarr', 'dolibarr_deprecated', 'experimental_deprecated' or a version string like 'x.y.z'
-		$this->version = '1.2.0';
+		$this->version = '1.3.0';
 		// Url to the file with your last numberversion of this module
 		//$this->url_last_version = 'http://www.example.com/versionmodule.txt';
 
@@ -294,17 +294,17 @@ class modEnjoyHolidays extends DolibarrModules
 		$this->rights[$r][5] = '';
 		$r++;
 		$this->rights[$r][0] = $this->numero . sprintf('%02d', (1 * 10) + 0 + 1);
-		$this->rights[$r][1] = 'Read TravelPackage object of EnjoyHolidays';
+		$this->rights[$r][1] = $langs->trans('TravelPackageReadRight');
 		$this->rights[$r][4] = 'travelpackage';
 		$this->rights[$r][5] = 'read';
 		$r++;
 		$this->rights[$r][0] = $this->numero . sprintf('%02d', (1 * 10) + 1 + 1);
-		$this->rights[$r][1] = 'Create/Update TravelPackage object of EnjoyHolidays';
+		$this->rights[$r][1] = $langs->trans('TravelPackageWriteRight');
 		$this->rights[$r][4] = 'travelpackage';
 		$this->rights[$r][5] = 'write';
 		$r++;
 		$this->rights[$r][0] = $this->numero . sprintf('%02d', (1 * 10) + 2 + 1);
-		$this->rights[$r][1] = 'Delete TravelPackage object of EnjoyHolidays';
+		$this->rights[$r][1] = $langs->trans('TravelPackageDeleteRight');
 		$this->rights[$r][4] = 'travelpackage';
 		$this->rights[$r][5] = 'delete';
 		$r++;
