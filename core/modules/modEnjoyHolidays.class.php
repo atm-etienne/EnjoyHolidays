@@ -230,20 +230,55 @@ class modEnjoyHolidays extends DolibarrModules
 		 );
 		 */
 		/* BEGIN MODULEBUILDER DICTIONARIES */
-		$this->dictionaries=array(
-			'langs'=>'enjoyholidays@enjoyholidays',
-			'tabname'=>array('c_transportmean', 'c_default_travel_price'),
-			'tablib'=>array('TransportMean', 'DefaultTravelPrice'),
-			'tabsql'=>array('SELECT f.rowid as rowid, f.code, f.label, f.active FROM llx_c_transportmean as f',
-							'SELECT f.rowid as rowid, f.fk_country, c.label, f.label, f.active FROM llx_c_default_travel_price as f JOIN llx_c_country as c'),
-			'tabsqlsort'=>array('label ASC', 'f.label ASC'),
-			'tabfield'=>array('code,label', 'country,amount'),
-			'tabfieldvalue'=>array('code,label', 'c.label,f.label'),
-			'tabfieldinsert'=>array('code,label', 'fk_country,f.label'),
-			'tabrowid'=>array('rowid', 'f.rowid'),
-			'tabcond'=>array(isModEnabled('enjoyholidays'), isModEnabled('enjoyholidays')),
-			'tabhelp'=>array(array('code'=>$langs->trans('CodeTooltipHelp'), 'field2' => 'field2tooltip'),
-							array('code'=>$langs->trans('CodeTooltipHelp'), 'field2' => 'field2tooltip')),
+//		$tabsql[3] = "SELECT r.rowid as rowid, r.code_region as code, r.nom as libelle, r.fk_pays as country_id, c.code as country_code, c.label as country, r.active FROM ".MAIN_DB_PREFIX."c_regions as r, ".MAIN_DB_PREFIX."c_country as c WHERE r.fk_pays=c.rowid and c.active=1";
+
+		$tabname = array();
+		$tablib = array();
+		$tabsql = array();
+		$tabsqlsort = array();
+		$tabfield = array();
+		$tabfieldvalue = array();
+		$tabfieldinsert = array();
+		$tabrowid = array();
+		$tabcond = array();
+		$tabhelp = array();
+
+		$tabname[0] = 'c_transportmean';
+		$tablib[0] = 'TransportMean';
+		$tabsql[0] = 'SELECT f.rowid as rowid, f.code, f.label, f.active FROM llx_c_transportmean as f';
+		$tabsqlsort[0] = 'label ASC';
+		$tabfield[0] = 'code,label';
+		$tabfieldvalue[0] = 'code,label';
+		$tabfieldinsert[0] = 'code,label';
+		$tabrowid[0] = 'rowid';
+		$tabcond[0] = isModEnabled('enjoyholidays');
+		$tabhelp[0] = array('code'=>$langs->trans('CodeTooltipHelp'), 'field2' => 'field2tooltip');
+
+
+		$tabname[1] = 'c_default_travel_price';
+		$tablib[1] = 'DefaultTravelPrice';
+		$tabsql[1] = 'SELECT p.rowid as rowid, p.amount, p.fk_country as country_id, c.code as country_code, c.label as country, p.active FROM llx_c_default_travel_price as p, llx_c_country as c WHERE p.fk_country = c.rowid and c.active = 1';
+		$tabsqlsort[1] = 'country ASC';
+		$tabfield[1] = 'country,amount';
+		$tabfieldvalue[1] = 'amount,country';
+		$tabfieldinsert[1] = 'amount,fk_country';
+		$tabrowid[1] = 'rowid';
+		$tabcond[1] = isModEnabled('enjoyholidays');
+		$tabhelp[1] = array('code'=>$langs->trans('CodeTooltipHelp'), 'field2' => 'field2tooltip');
+
+
+		$this->dictionaries = array(
+			'langs'				=>'enjoyholidays@enjoyholidays',
+			'tabname'			=> $tabname,
+			'tablib'			=> $tablib,
+			'tabsql'			=> $tabsql,
+			'tabsqlsort'		=> $tabsqlsort,
+			'tabfield'			=> $tabfield,
+			'tabfieldvalue' 	=> $tabfieldvalue,
+			'tabfieldinsert'	=> $tabfieldinsert,
+			'tabrowid'			=> $tabrowid,
+			'tabcond' 			=> $tabcond,
+			'tabhelp'			=> $tabhelp
 		);
 		/* END MODULEBUILDER DICTIONARIES */
 
