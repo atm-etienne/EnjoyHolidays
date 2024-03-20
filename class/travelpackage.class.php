@@ -1263,7 +1263,6 @@ class TravelPackage extends CommonObject
 	 */
 	public function setDefaultAmount()
 	{
-		global $conf;
 		$defaultConfValue = getDolGlobalString('ENJOYHOLIDAYS_DEFAULT_TRAVEL_PRICE');
 
 		$sql = "SELECT amount";
