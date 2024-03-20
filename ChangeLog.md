@@ -1,5 +1,9 @@
 # CHANGELOG ENJOYHOLIDAYS FOR [DOLIBARR ERP CRM](https://www.dolibarr.org)
 
+## Release 1.6
+
+- NEW: Updates the travel amount when selecting the destination country
+
 ## Release 1.4
 
 - NEW: Create box to display latest travel packages - *2024-03-19* 1.4
