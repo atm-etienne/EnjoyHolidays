@@ -2,7 +2,7 @@
 
 ## Release 1.6
 
-- NEW: Updates the travel amount when selecting the destination country
+- NEW: Updates the travel amount when selecting the destination country - *2024-03-20* 1.6
 
 ## Release 1.4
 
