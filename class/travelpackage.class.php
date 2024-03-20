@@ -1288,6 +1288,9 @@ class TravelPackage extends CommonObject
 								}).done(data => {
 									const amountField = $('#amount');
 									amountField.val(data.amount);
+								}).fail(error => {
+									const errorText = error.responseJSON?.error;
+									console.error('Error:', errorText);
 								});
 							});
 						});
