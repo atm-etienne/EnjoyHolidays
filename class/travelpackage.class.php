@@ -1270,8 +1270,8 @@ class TravelPackage extends CommonObject
 		$sql .= " WHERE fk_country = '".$this->db->escape($this->destinationCountry)."' AND active = 1";
 
 		$resql = $this->db->query($sql);
-		if ($this->db->num_rows($resql)) {
-			$obj = $this->db->fetch_object($resql);
+
+		if ($obj = $this->db->fetch_object($resql)) {
 			$this->amount = $obj->amount;
 		} else {
 			$this->amount = $defaultConfValue;
