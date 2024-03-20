@@ -22,7 +22,7 @@ switch ($action) {
 	default:
 		http_response_code(404);
 		$apiResult = array_merge_recursive($apiResult, [
-			'stausCode'	=> 404,
+			'statusCode'	=> 404,
 			'error'		=> 'Action not found'
 		]);
 }
