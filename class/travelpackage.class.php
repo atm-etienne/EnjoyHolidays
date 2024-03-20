@@ -1264,7 +1264,7 @@ class TravelPackage extends CommonObject
 	public function setDefaultAmount()
 	{
 		global $conf;
-		$defaultConfValue = $conf->global->ENJOYHOLIDAYS_DEFAULT_TRAVEL_PRICE;
+		$defaultConfValue = getDolGlobalString('ENJOYHOLIDAYS_DEFAULT_TRAVEL_PRICE');
 
 		$sql = "SELECT amount";
 		$sql .= " FROM ".$this->db->prefix()."c_default_travel_price";
