@@ -1267,7 +1267,7 @@ class TravelPackage extends CommonObject
 
 		$sql = "SELECT amount";
 		$sql .= " FROM ".$this->db->prefix()."c_default_travel_price";
-		$sql .= " WHERE fk_country = '".$this->db->escape($this->destinationCountry)."'";
+		$sql .= " WHERE fk_country = '".$this->db->escape($this->destinationCountry)."' AND active = 1";
 
 		$resql = $this->db->query($sql);
 		if ($this->db->num_rows($resql)) {
