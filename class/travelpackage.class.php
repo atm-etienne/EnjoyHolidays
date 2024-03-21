@@ -1277,4 +1277,55 @@ class TravelPackage extends CommonObject
 			$this->amount = $defaultConfValue;
 		}
 	}
+
+
+	/**
+	 * Return HTML string to put an input field into a page
+	 * Code very similar with showInputField of extra fields
+	 *
+	 * @param  array|null	$val	       Array of properties for field to show (used only if ->fields not defined)
+	 * @param  string  		$key           Key of attribute
+	 * @param  string|array	$value         Preselected value to show (for date type it must be in timestamp format, for amount or price it must be a php numeric value, for array type must be array)
+	 * @param  string  		$moreparam     To add more parameters on html input tag
+	 * @param  string  		$keysuffix     Prefix string to add into name and id of field (can be used to avoid duplicate names)
+	 * @param  string  		$keyprefix     Suffix string to add into name and id of field (can be used to avoid duplicate names)
+	 * @param  string|int	$morecss       Value for css to define style/length of field. May also be a numeric.
+	 * @param  int			$nonewbutton   Force to not show the new button on field that are links to object
+	 * @return string
+	 */
+	public function showInputField($val, $key, $value, $moreparam = '', $keysuffix = '', $keyprefix = '', $morecss = 0, $nonewbutton = 0)
+	{
+		$out = parent::showInputField($val, $key, $value, $moreparam, $keysuffix, $keyprefix, $morecss, $nonewbutton);
+
+		if ($key === 'destinationCountry') {
+			print "<script type='application/javascript'>
+						$(document).ready(() => {
+							const select = $('#".$keyprefix.$key.$keysuffix."');
+
+							select.change(() => {
+								const countryId = select.val();
+
+								$.ajax({
+									type: 'GET',
+									url: this.url + '/../script/interface.php',
+									data:
+										{
+											'action': 'getDefaultCountryTravelPrice',
+											countryId
+										}
+								}).done(data => {
+									const amountField = $('#amount');
+									amountField.val(data.amount);
+								}).fail(error => {
+									const errorText = error.responseJSON?.error;
+									console.error('Error:', errorText);
+								});
+							});
+						});
+					</script>";
+		}
+
+		return $out;
+	}
+
 }

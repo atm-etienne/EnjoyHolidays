@@ -1,5 +1,9 @@
 # CHANGELOG ENJOYHOLIDAYS FOR [DOLIBARR ERP CRM](https://www.dolibarr.org)
 
+## Release 1.6
+
+- NEW: Updates the travel amount when selecting the destination country - *2024-03-20* 1.6
+
 ## Release 1.5
 
 - NEW: Create a new module conf to set a default amount for travel packages - *2024-03-19* 1.5
