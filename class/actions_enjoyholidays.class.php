@@ -14,7 +14,7 @@ class ActionsEnjoyHolidays extends CommonHookActions {
 	public function addMoreActionsButtons($parameters, &$object, &$action, $hookManager) {
 		global $langs;
 
-		print '<a class="butAction">'. $langs->trans('NewTravelPackage') .'</a>';
+		print '<a class="butAction" href="'.DOL_URL_ROOT.'/custom/enjoyholidays/travelpackage_card.php?action=create&propalId='.$object->id.'">'. $langs->trans('NewTravelPackage') .'</a>';
 
 		return 0;
 	}
