@@ -144,6 +144,7 @@ class TravelPackage extends CommonObject
 	public $import_key;
 	public $model_pdf;
 	public $status;
+	public $propalId;
 	// END MODULEBUILDER PROPERTIES
 
 
@@ -259,11 +260,30 @@ class TravelPackage extends CommonObject
 				return -2;
 		}
 
-		$resultcreate = $this->createCommon($user, $notrigger);
+		$propalId = GETPOST('propalId', 'int');
+		$this->propalId = !empty($propalId) ? $propalId : null;
+
+		$resultTravelPackageCreate = $this->createCommon($user, $notrigger);
+
+		if ($this->propalId) {
+			$propalExists = CommonObject::isExistingObject('propal', $this->propalId);
+
+			if ($propalExists) {
+				$sql = "INSERT INTO ".$this->db->prefix()."element_element";
+				$sql .= " (fk_source, sourceType, fk_target, targettype)";
+				$sql .= " VALUES ('".$this->propalId."', 'propal', ".$resultTravelPackageCreate."', '".$this->element."')";
+
+				$resql = $this->db->query($sql);
+				if (!$resql) {
+					$this->error++;
+					$this->errors[] = $this->db->lasterror();
+				}
+			}
+		}
 
 		//$resultvalidate = $this->validate($user, $notrigger);
 
-		return $resultcreate;
+		return $resultTravelPackageCreate;
 	}
 
 	/**
