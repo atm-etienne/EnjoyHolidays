@@ -115,7 +115,7 @@ class TravelPackage extends CommonObject
 		"ref" => array("type"=>"varchar(128)", "label"=>"Ref", "enabled"=>"1", 'position'=>20, 'notnull'=>1, "visible"=>"1", "index"=>"1", "searchall"=>"1", "showoncombobox"=>"1", "validate"=>"1", "comment"=>"Reference of object"),
 		"destinationCountry" => array("type"=>"integer:ccountry:core/class/ccountry.class.php:1:(active:=:1)", "label"=>"DestinationCountry", "enabled"=>"1", 'position'=>35, 'notnull'=>1, "visible"=>"1",),
 		"label" => array("type"=>"varchar(255)", "label"=>"Label", "enabled"=>"1", 'position'=>30, 'notnull'=>1, "visible"=>"1", "searchall"=>"1", "css"=>"minwidth300", "cssview"=>"wordbreak", "help"=>"Help text", "validate"=>"1",),
-		"amount" => array("type"=>"price", "label"=>"Amount", "enabled"=>"1", 'position'=>40, 'notnull'=>0, "visible"=>"1", "default"=>"null", "isameasure"=>"1", "help"=>"Help text for amount", "validate"=>"1",),
+		"amount" => array("type"=>"price", "label"=>"Amount", "enabled"=>"1", 'position'=>40, 'notnull'=>0, "visible"=>"1", "default"=>"null", "isameasure"=>"1", "help"=>"HelpTextAmount", "validate"=>"1",),
 		"travelDepartureDate" => array("type"=>"datetime", "label"=>"TravelDepartureDate", "enabled"=>"1", 'position'=>50, 'notnull'=>0, "visible"=>"1",),
 		"travelBackDate" => array("type"=>"datetime", "label"=>"TravelBackDate", "enabled"=>"1", 'position'=>50, 'notnull'=>0, "visible"=>"1",),
 		"transportMean" => array("type"=>"integer:ctransportmean:custom/enjoyholidays/class/ctransportmean.class.php:1:(active:=:1)", "label"=>"TransportMean", "enabled"=>"1", 'position'=>50, 'notnull'=>0, "visible"=>"1",),
@@ -238,6 +238,10 @@ class TravelPackage extends CommonObject
 		global $langs;
 
 		$fieldsAreValid = $this->areFieldsValid();
+
+		if (!$this->amount) {
+			$this->setDefaultAmount();
+		}
 
 		if (!$fieldsAreValid) {
 			return -1;
@@ -1248,6 +1252,30 @@ class TravelPackage extends CommonObject
 		}
 
 		return true;
+	}
+
+	/**
+	 * Set the amount with default value
+	 * According to the DefaultTravelPrice dictionary - get the default price of the selected country if it has
+	 * Otherwise, get the default value set in the module configuration
+	 *
+	 * @return void
+	 */
+	public function setDefaultAmount()
+	{
+		$defaultConfValue = getDolGlobalString('ENJOYHOLIDAYS_DEFAULT_TRAVEL_PRICE');
+
+		$sql = "SELECT amount";
+		$sql .= " FROM ".$this->db->prefix()."c_default_travel_price";
+		$sql .= " WHERE fk_country = '".$this->db->escape($this->destinationCountry)."' AND active = 1";
+
+		$resql = $this->db->query($sql);
+
+		if ($obj = $this->db->fetch_object($resql)) {
+			$this->amount = $obj->amount;
+		} else {
+			$this->amount = $defaultConfValue;
+		}
 	}
 
 

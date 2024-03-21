@@ -42,11 +42,18 @@ TravelBackDate = Travel back
 TransportMean = Transport mean
 
 #
+# Help text
+#
+HelpTextAmount = Keep it empty to set value with the default one
+DefaultTravelPackagePriceHelp = Price that will be used as travel amount if the destination country don't have one
+
+#
 # Admin page
 #
 EnjoyHolidaysSetup = EnjoyHolidays setup
 Settings = Settings
 EnjoyHolidaysSetupPage = EnjoyHolidays setup page
+ENJOYHOLIDAYS_DEFAULT_TRAVEL_PRICE = Default price used for travel packages
 
 
 #
