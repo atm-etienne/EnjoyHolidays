@@ -1272,7 +1272,7 @@ class TravelPackage extends CommonObject
 		if ($key === 'destinationCountry') {
 			print "<script type='application/javascript'>
 						$(() => {
-							const select = $('select[name=\"".$key."\"]');
+							const select = $('#".$keyprefix.$key.$keysuffix."');
 
 							select.change(() => {
 								const countryId = select.val();
