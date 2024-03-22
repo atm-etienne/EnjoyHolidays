@@ -271,7 +271,7 @@ class TravelPackage extends CommonObject
 			if ($propalExists) {
 				$sql = "INSERT INTO ".$this->db->prefix()."element_element";
 				$sql .= " (fk_source, sourceType, fk_target, targettype)";
-				$sql .= " VALUES ('".$this->propalId."', 'propal', ".$resultTravelPackageCreate."', '".$this->element."')";
+				$sql .= " VALUES ('".$this->propalId."', 'propal', ".$resultTravelPackageCreate.", '".$this->module."_".$this->element."')";
 
 				$resql = $this->db->query($sql);
 				if (!$resql) {
