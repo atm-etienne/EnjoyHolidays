@@ -111,4 +111,34 @@ class InterfaceTravelPackageTriggers extends DolibarrTriggers
 
 		return 0;
 	}
+
+	public function propalDelete($action, $object, User $user, Translate $langs, Conf $conf) {
+
+		$sql = "SELECT fk_target";
+		$sql .= " FROM ".$this->db->prefix()."element_element";
+		$sql .= " WHERE sourcetype = 'propal' AND fk_source = ".$this->db->escape($object->id);
+		$sql .= " 	AND targettype = 'enjoyholidays_travelpackage'";
+
+		$resql = $this->db->query($sql);
+		if ($resql) {
+			$travelPackagesToDelete = [];
+
+			for ($i=0 ; $i<$this->db->num_rows($resql) ; $i++) {
+				$obj = $this->db->fetch_object($resql);
+				$travelPackagesToDelete[] = $obj->fk_target;
+			}
+
+			$sql = "DELETE FROM ".$this->db->prefix()."enjoyholidays_travelpackage";
+			$sql .= " WHERE rowid IN (".implode(', ', $travelPackagesToDelete).")";
+
+			$resql = $this->db->query($sql);
+			if ($resql) {
+				dol_syslog(
+					"Trigger '".$this->name."' for action '".$action."' launched by ".__FILE__.". Removed successfully '".sizeof($travelPackagesToDelete)."'."
+				);
+			}
+		}
+
+		return 0;
+	}
 }
