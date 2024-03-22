@@ -19,4 +19,15 @@ class ActionsEnjoyHolidays extends CommonHookActions {
 		return 0;
 	}
 
+	public function setLinkedObjectSourceTargetType($paramters, &$object, &$action, $hookManager) {
+
+		if (in_array('travelpackagecard', $hookManager->contextarray)) {
+			$this->results['targettype'] = 'enjoyholidays_travelpackage';
+			$this->results['targetid'] = $object->id;
+		}
+
+		return 1;
+
+	}
+
 }
