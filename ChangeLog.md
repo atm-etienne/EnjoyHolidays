@@ -1,5 +1,9 @@
 # CHANGELOG ENJOYHOLIDAYS FOR [DOLIBARR ERP CRM](https://www.dolibarr.org)
 
+## Release 1.8
+
+- NEW: Create extrafields for propal and propalLine: Specific mention, and Manager - *2024-03-25* 1.8 
+
 ## Release 1.6
 
 - NEW: Updates the travel amount when selecting the destination country - *2024-03-20* 1.6
