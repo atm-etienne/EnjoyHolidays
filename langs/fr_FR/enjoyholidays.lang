@@ -41,6 +41,9 @@ TravelDepartureDate = Départ
 TravelBackDate = Retour
 TransportMean = Moyen de transport
 
+SpecificMention = Mention spécifique
+Manager = Responsable
+
 #
 # Help text
 #

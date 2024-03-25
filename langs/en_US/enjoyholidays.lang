@@ -41,6 +41,9 @@ TravelDepartureDate = Travel departure
 TravelBackDate = Travel back
 TransportMean = Transport mean
 
+SpecificMention = Specific mention
+Manager = Manager
+
 #
 # Help text
 #
