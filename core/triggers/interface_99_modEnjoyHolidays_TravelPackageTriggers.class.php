@@ -114,58 +114,34 @@ class InterfaceTravelPackageTriggers extends DolibarrTriggers
 
 	public function propalDelete($action, $object, User $user, Translate $langs, Conf $conf) {
 
-		$sql = "SELECT fk_target";
-		$sql .= " FROM ".$this->db->prefix()."element_element";
-		$sql .= " WHERE sourcetype = 'propal' AND fk_source = ".$this->db->escape($object->id);
-		$sql .= " 	AND targettype = 'enjoyholidays_travelpackage'";
+		return $this->deleteFromElementElement($object);
 
-		$resql = $this->db->query($sql);
-		if ($resql) {
-			$travelPackagesToDelete = [];
-
-			for ($i=0 ; $i<$this->db->num_rows($resql) ; $i++) {
-				$obj = $this->db->fetch_object($resql);
-				$travelPackagesToDelete[] = $obj->fk_target;
-			}
-
-			$sql = "DELETE FROM ".$this->db->prefix()."enjoyholidays_travelpackage";
-			$sql .= " WHERE rowid IN (".implode(', ', $travelPackagesToDelete).")";
-
-			$resql = $this->db->query($sql);
-			if ($resql) {
-				dol_syslog(
-					"Trigger '".$this->name."' for action '".$action."' launched by ".__FILE__.". Removed successfully '".sizeof($travelPackagesToDelete)."'."
-				);
-			}
-		}
-
-		return 0;
 	}
 
 	public function travelpackageDelete($action, $object, User $user, Translate $langs, Conf $conf) {
 
-		$sql = "SELECT fk_source";
-		$sql .= " FROM ".$this->db->prefix()."element_element";
-		$sql .= " WHERE sourcetype = 'propal' AND fk_target = ".$this->db->escape($object->id);
+		return $this->deleteFromElementElement($object, false);
+
+	}
+
+	/**
+	 * @param $object
+	 * @param $fromPropal    bool   true: delete elements from propalDelete (select fk_target)	false: delete elements from travelpackageDelete (select fk_source)
+	 * @return int
+	 */
+	private function deleteFromElementElement($object, bool $fromPropal = true) {
+		$sql = "DELETE ee, ".($fromPropal ? 'tp' : 'p');
+		$sql .= " FROM ".$this->db->prefix()."element_element ee";
+		$sql .= " 	JOIN ".$this->db->prefix().($fromPropal ? 'enjoyholidays_travelpackage tp' : 'propal p');
+		$sql .= "		ON " .($fromPropal ? 'ee.fk_target = tp.rowid'
+											: 'ee.fk_source = p.rowid');
+		$sql .= " WHERE sourcetype = 'propal' AND ".($fromPropal ? 'fk_source' : 'fk_target'). " = ".$this->db->escape($object->id);
 		$sql .= " 	AND targettype = 'enjoyholidays_travelpackage'";
 
 		$resql = $this->db->query($sql);
-		if ($resql) {
-			$propalsToDelete = [];
-
-			for ($i=0 ; $i<$this->db->num_rows($resql) ; $i++) {
-				$obj = $this->db->fetch_object($resql);
-				$propalsToDelete[] = $obj->fk_source;
-			}
-
-			$sql = "DELETE FROM ".$this->db->prefix()."propal";
-			$sql .= " WHERE rowid IN (".implode(', ', $propalsToDelete).")";
-
-			$resql = $this->db->query($sql);
-			if ($resql) {
-				dol_syslog("Trigger  '".$this->name."' for action '".$action."' launched by ".__FILE__.". Removed successfully '".sizeof($propalsToDelete)."'.");
-			}
+		if (!$resql) {
+			return -1;
 		}
-
+		return 0;
 	}
 }
