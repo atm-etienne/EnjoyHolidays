@@ -119,7 +119,7 @@ class modEnjoyHolidays extends DolibarrModules
 				'travelpackagecard'
 			),
 			// Set this to 1 if features of module are opened to external users
-			'moduleforexternal' => 0,
+			'moduleforexternal' => 1,
 			'contactelement'	=> array('travelpackage'=>'travelpackage')
 		);
 
