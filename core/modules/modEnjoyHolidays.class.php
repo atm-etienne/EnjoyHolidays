@@ -88,7 +88,7 @@ class modEnjoyHolidays extends DolibarrModules
 		// Define some features supported by module (triggers, login, substitutions, menus, css, etc...)
 		$this->module_parts = array(
 			// Set this to 1 if module has its own trigger directory (core/triggers)
-			'triggers' => 0,
+			'triggers' => 1,
 			// Set this to 1 if module has its own login method file (core/login)
 			'login' => 0,
 			// Set this to 1 if module has its own substitution function file (core/substitutions)
@@ -115,11 +115,8 @@ class modEnjoyHolidays extends DolibarrModules
 			),
 			// Set here all hooks context managed by module. To find available hook context, make a "grep -r '>initHooks(' *" on source code. You can also set hook context to 'all'
 			'hooks' => array(
-				//   'data' => array(
-				//       'hookcontext1',
-				//       'hookcontext2',
-				//   ),
-				//   'entity' => '0',
+			   	'propalcard',
+				'travelpackagecard'
 			),
 			// Set this to 1 if features of module are opened to external users
 			'moduleforexternal' => 0,
@@ -549,7 +546,7 @@ class modEnjoyHolidays extends DolibarrModules
 		include_once DOL_DOCUMENT_ROOT.'/core/class/extrafields.class.php';
 		$extrafields = new ExtraFields($this->db);
 		$result1 = $extrafields->addExtraField('specificmention', 'SpecificMention', 'varchar', '100', '255', 'propal', 0, 0, '', '', 1, '', 1, '', '', 1, 'enjoyholidays@enjoyholidays', 'isModEnabled("enjoyholidays")');
-		$result1 = $extrafields->addExtraField('manager', 'Manager', 'link', '100', '', 'propaldet', 0, 0, '', 'a:1:{s:7:"options";a:1:{s:30:"User:user/class/user.class.php";N;}}', 1, '', 1, '', '', 1, 'enjoyholidays@enjoyholidays', 'isModEnabled("enjoyholidays")');
+		$result2 = $extrafields->addExtraField('manager', 'Manager', 'link', '100', '', 'propaldet', 0, 0, '', 'a:1:{s:7:"options";a:1:{s:30:"User:user/class/user.class.php";N;}}', 1, '', 1, '', '', 1, 'enjoyholidays@enjoyholidays', 'isModEnabled("enjoyholidays")');
 		//$result1=$extrafields->addExtraField('enjoyholidays_myattr1', "New Attr 1 label", 'boolean', 1,  3, 'thirdparty',   0, 0, '', '', 1, '', 0, 0, '', '', 'enjoyholidays@enjoyholidays', 'isModEnabled("enjoyholidays")');
 		//$result2=$extrafields->addExtraField('enjoyholidays_myattr2', "New Attr 2 label", 'varchar', 1, 10, 'project',      0, 0, '', '', 1, '', 0, 0, '', '', 'enjoyholidays@enjoyholidays', 'isModEnabled("enjoyholidays")');
 		//$result3=$extrafields->addExtraField('enjoyholidays_myattr3', "New Attr 3 label", 'varchar', 1, 10, 'bank_account', 0, 0, '', '', 1, '', 0, 0, '', '', 'enjoyholidays@enjoyholidays', 'isModEnabled("enjoyholidays")');
