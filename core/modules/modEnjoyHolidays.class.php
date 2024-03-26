@@ -459,13 +459,13 @@ class modEnjoyHolidays extends DolibarrModules
 		// Exports profiles provided by this module
 		$r = 1;
 		/* BEGIN MODULEBUILDER EXPORT MYOBJECT */
-		/*
+
 		$langs->load("enjoyholidays@enjoyholidays");
 		$this->export_code[$r]=$this->rights_class.'_'.$r;
-		$this->export_label[$r]='TravelPackageLines';	// Translation key (used only if key ExportDataset_xxx_z not found)
-		$this->export_icon[$r]='travelpackage@enjoyholidays';
+		$this->export_label[$r]='TravelPackage';	// Translation key (used only if key ExportDataset_xxx_z not found)
+		$this->export_icon[$r]='enjoyholidays@enjoyholidays';
 		// Define $this->export_fields_array, $this->export_TypeFields_array and $this->export_entities_array
-		$keyforclass = 'TravelPackage'; $keyforclassfile='/enjoyholidays/class/travelpackage.class.php'; $keyforelement='travelpackage@enjoyholidays';
+		$keyforclass = 'TravelPackage'; $keyforclassfile='/enjoyholidays/class/travelpackage.class.php'; $keyforelement='TravelPackage';
 		include DOL_DOCUMENT_ROOT.'/core/commonfieldsinexport.inc.php';
 		//$this->export_fields_array[$r]['t.fieldtoadd']='FieldToAdd'; $this->export_TypeFields_array[$r]['t.fieldtoadd']='Text';
 		//unset($this->export_fields_array[$r]['t.fieldtoremove']);
@@ -480,11 +480,11 @@ class modEnjoyHolidays extends DolibarrModules
 		//$this->export_examplevalues_array[$r] = array('t.field'=>'Example');
 		//$this->export_help_array[$r] = array('t.field'=>'FieldDescHelp');
 		$this->export_sql_start[$r]='SELECT DISTINCT ';
-		$this->export_sql_end[$r]  =' FROM '.MAIN_DB_PREFIX.'travelpackage as t';
+		$this->export_sql_end[$r]  =' FROM '.MAIN_DB_PREFIX.'enjoyholidays_travelpackage as t';
 		//$this->export_sql_end[$r]  =' LEFT JOIN '.MAIN_DB_PREFIX.'travelpackage_line as tl ON tl.fk_travelpackage = t.rowid';
 		$this->export_sql_end[$r] .=' WHERE 1 = 1';
-		$this->export_sql_end[$r] .=' AND t.entity IN ('.getEntity('travelpackage').')';
-		$r++; */
+//		$this->export_sql_end[$r] .=' AND t.entity IN ('.getEntity('enjoyholidays_travelpackage').')';
+		$r++;
 		/* END MODULEBUILDER EXPORT MYOBJECT */
 
 		// Imports profiles provided by this module
