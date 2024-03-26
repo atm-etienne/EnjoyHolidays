@@ -100,7 +100,7 @@ class modEnjoyHolidays extends DolibarrModules
 			// Set this to 1 if module has its own barcode directory (core/modules/barcode)
 			'barcode' => 0,
 			// Set this to 1 if module has its own models directory (core/modules/xxx)
-			'models' => 0,
+			'models' => 1,
 			// Set this to 1 if module has its own printing directory (core/modules/printing)
 			'printing' => 0,
 			// Set this to 1 if module has its own theme directory (theme)
@@ -559,7 +559,7 @@ class modEnjoyHolidays extends DolibarrModules
 		// Permissions
 		$this->remove($options);
 
-		$sql = array();
+		$sql = array("INSERT INTO ".MAIN_DB_PREFIX."document_model (nom, type, entity) VALUES('azur_travelpackage', 'propal', ".$conf->entity.")");
 
 		// Document templates
 		$moduledir = dol_sanitizeFileName('enjoyholidays');
