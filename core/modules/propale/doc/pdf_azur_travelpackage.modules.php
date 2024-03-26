@@ -1586,10 +1586,12 @@ class pdf_azur_travelpackage extends ModelePDFPropales
 			$pdf->MultiCell(100, 3, $outputlangs->transnoentities("CustomerCode") . " : " . $outputlangs->transnoentities($object->thirdparty->code_client), '', 'R');
 		}
 
-		$posy += 4;
-		$pdf->SetXY($posx, $posy);
-		$pdf->SetTextColor(0, 0, 60);
-		$pdf->MultiCell(100, 3, $outputlangs->transnoentities("SpecificMention") . " : mention spécifique", '', 'R');
+        if (isset($object->array_options['options_specificmention']) && strlen($object->array_options['options_specificmention'])) {
+            $posy += 4;
+            $pdf->SetXY($posx, $posy);
+            $pdf->SetTextColor(0, 0, 60);
+            $pdf->MultiCell(100, 3, $outputlangs->transnoentities("SpecificMention") . " : ".$outputlangs->convToOutputCharset($object->array_options['options_specificmention']), '', 'R');
+        }
 
 		// Get contact
 		if (getDolGlobalString('DOC_SHOW_FIRST_SALES_REP')) {
