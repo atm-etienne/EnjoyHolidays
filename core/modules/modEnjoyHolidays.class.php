@@ -549,7 +549,7 @@ class modEnjoyHolidays extends DolibarrModules
 		include_once DOL_DOCUMENT_ROOT.'/core/class/extrafields.class.php';
 		$extrafields = new ExtraFields($this->db);
 		$result1 = $extrafields->addExtraField('specificmention', 'SpecificMention', 'varchar', '100', '255', 'propal', 0, 0, '', '', 1, '', 1, '', '', 1, 'enjoyholidays@enjoyholidays', 'isModEnabled("enjoyholidays")');
-		$result1 = $extrafields->addExtraField('manager', 'Manager', 'link', '100', '', 'propaldet', 0, 0, '', 'a:1:{s:7:"options";a:1:{s:30:"User:user/class/user.class.php";N;}}', 1, '', 1, '', '', 1, 'enjoyholidays@enjoyholidays', 'isModEnabled("enjoyholidays")');
+		$result2 = $extrafields->addExtraField('manager', 'Manager', 'link', '100', '', 'propaldet', 0, 0, '', 'a:1:{s:7:"options";a:1:{s:30:"User:user/class/user.class.php";N;}}', 1, '', 1, '', '', 1, 'enjoyholidays@enjoyholidays', 'isModEnabled("enjoyholidays")');
 		//$result1=$extrafields->addExtraField('enjoyholidays_myattr1', "New Attr 1 label", 'boolean', 1,  3, 'thirdparty',   0, 0, '', '', 1, '', 0, 0, '', '', 'enjoyholidays@enjoyholidays', 'isModEnabled("enjoyholidays")');
 		//$result2=$extrafields->addExtraField('enjoyholidays_myattr2', "New Attr 2 label", 'varchar', 1, 10, 'project',      0, 0, '', '', 1, '', 0, 0, '', '', 'enjoyholidays@enjoyholidays', 'isModEnabled("enjoyholidays")');
 		//$result3=$extrafields->addExtraField('enjoyholidays_myattr3', "New Attr 3 label", 'varchar', 1, 10, 'bank_account', 0, 0, '', '', 1, '', 0, 0, '', '', 'enjoyholidays@enjoyholidays', 'isModEnabled("enjoyholidays")');
