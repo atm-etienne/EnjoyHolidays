@@ -26,22 +26,11 @@
  */
 
 /**
- *    \file       htdocs/custom/enjoyholidays/core/modules/doc/pdf_azur_travelpackage.modules.php
+ *    \file       htdocs/custom/enjoyholidays/core/modules/propale/doc/pdf_azur_travelpackage.modules.php
  *    \ingroup    enjoyholidays
  *    \brief      File of Class to generate PDF travel package with Azur template
  */
 
-namespace propale\doc;
-use Account;
-use DoliDB;
-use HookManager;
-use ModelePDFPropales;
-use Product;
-use Propal;
-use Propalmergepdfproduct;
-use TCPDF;
-use Translate;
-use User;
 
 require_once DOL_DOCUMENT_ROOT . '/core/modules/propale/modules_propale.php';
 require_once DOL_DOCUMENT_ROOT . '/product/class/product.class.php';
@@ -1600,7 +1589,7 @@ class pdf_azur_travelpackage extends ModelePDFPropales
 		$posy += 4;
 		$pdf->SetXY($posx, $posy);
 		$pdf->SetTextColor(0, 0, 60);
-		$pdf->MultiCell(100, 3, $outputlangs->transnoentities("SpecificMention") . " : mention spécifique");
+		$pdf->MultiCell(100, 3, $outputlangs->transnoentities("SpecificMention") . " : mention spécifique", '', 'R');
 
 		// Get contact
 		if (getDolGlobalString('DOC_SHOW_FIRST_SALES_REP')) {
