@@ -8,6 +8,11 @@
 
 - NEW: Create extrafields for propal and propalLine: Specific mention, and Manager - *2024-03-25* 1.8 
 
+## Release 1.7
+
+- NEW: Add new button to create a new TravelPackage linked to a propal - *2024-03-25* 1.7
+    - Save link between the both, and deleting one side will delete the other one
+
 ## Release 1.6
 
 - NEW: Updates the travel amount when selecting the destination country - *2024-03-20* 1.6
