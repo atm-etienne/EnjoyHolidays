@@ -468,6 +468,7 @@ class modEnjoyHolidays extends DolibarrModules
 		$keyforclass = 'TravelPackage'; $keyforclassfile='/enjoyholidays/class/travelpackage.class.php'; $keyforelement='TravelPackage';
 		include DOL_DOCUMENT_ROOT.'/core/commonfieldsinexport.inc.php';
 		//$this->export_fields_array[$r]['t.fieldtoadd']='FieldToAdd'; $this->export_TypeFields_array[$r]['t.fieldtoadd']='Text';
+		unset($this->export_fields_array[$r]['t.import_key']);
 		//unset($this->export_fields_array[$r]['t.fieldtoremove']);
 		//$keyforclass = 'TravelPackageLine'; $keyforclassfile='/enjoyholidays/class/travelpackage.class.php'; $keyforelement='travelpackageline@enjoyholidays'; $keyforalias='tl';
 		//include DOL_DOCUMENT_ROOT.'/core/commonfieldsinexport.inc.php';
@@ -490,13 +491,13 @@ class modEnjoyHolidays extends DolibarrModules
 		// Imports profiles provided by this module
 		$r = 1;
 		/* BEGIN MODULEBUILDER IMPORT MYOBJECT */
-		/*
+
 		$langs->load("enjoyholidays@enjoyholidays");
 		$this->import_code[$r]=$this->rights_class.'_'.$r;
-		$this->import_label[$r]='TravelPackageLines';	// Translation key (used only if key ExportDataset_xxx_z not found)
-		$this->import_icon[$r]='travelpackage@enjoyholidays';
+		$this->import_label[$r]='TravelPackage';	// Translation key (used only if key ExportDataset_xxx_z not found)
+		$this->import_icon[$r]='enjoyholidays@enjoyholidays';
 		$this->import_tables_array[$r] = array('t' => MAIN_DB_PREFIX.'enjoyholidays_travelpackage', 'extra' => MAIN_DB_PREFIX.'enjoyholidays_travelpackage_extrafields');
-		$this->import_tables_creator_array[$r] = array('t' => 'fk_user_author'); // Fields to store import user id
+//		$this->import_tables_creator_array[$r] = array('t' => 'fk_user_author'); // Fields to store import user id
 		$import_sample = array();
 		$keyforclass = 'TravelPackage'; $keyforclassfile='/enjoyholidays/class/travelpackage.class.php'; $keyforelement='travelpackage@enjoyholidays';
 		include DOL_DOCUMENT_ROOT.'/core/commonfieldsinimport.inc.php';
@@ -506,21 +507,21 @@ class modEnjoyHolidays extends DolibarrModules
 		$this->import_fieldshidden_array[$r] = array('extra.fk_object' => 'lastrowid-'.MAIN_DB_PREFIX.'enjoyholidays_travelpackage');
 		$this->import_regex_array[$r] = array();
 		$this->import_examplevalues_array[$r] = array_merge($import_sample, $import_extrafield_sample);
-		$this->import_updatekeys_array[$r] = array('t.ref' => 'Ref');
+		$this->import_updatekeys_array[$r] = array('t.ref' => 'Ref', 't.rowid' => 'TechnicalID');
 		$this->import_convertvalue_array[$r] = array(
 			't.ref' => array(
 				'rule'=>'getrefifauto',
 				'class'=>(!getDolGlobalString('ENJOYHOLIDAYS_MYOBJECT_ADDON') ? 'mod_travelpackage_standard' : getDolGlobalString('ENJOYHOLIDAYS_MYOBJECT_ADDON')),
-				'path'=>"/core/modules/commande/".(!getDolGlobalString('ENJOYHOLIDAYS_MYOBJECT_ADDON') ? 'mod_travelpackage_standard' : getDolGlobalString('ENJOYHOLIDAYS_MYOBJECT_ADDON')).'.php'
+				'path'=>"/core/modules/commande/".(!getDolGlobalString('ENJOYHOLIDAYS_MYOBJECT_ADDON') ? 'mod_travelpackage_standard' : getDolGlobalString('ENJOYHOLIDAYS_MYOBJECT_ADDON')).'.php',
 				'classobject'=>'TravelPackage',
 				'pathobject'=>'/enjoyholidays/class/travelpackage.class.php',
 			),
-			't.fk_soc' => array('rule' => 'fetchidfromref', 'file' => '/societe/class/societe.class.php', 'class' => 'Societe', 'method' => 'fetch', 'element' => 'ThirdParty'),
-			't.fk_user_valid' => array('rule' => 'fetchidfromref', 'file' => '/user/class/user.class.php', 'class' => 'User', 'method' => 'fetch', 'element' => 'user'),
-			't.fk_mode_reglement' => array('rule' => 'fetchidfromcodeorlabel', 'file' => '/compta/paiement/class/cpaiement.class.php', 'class' => 'Cpaiement', 'method' => 'fetch', 'element' => 'cpayment'),
+//			't.fk_soc' => array('rule' => 'fetchidfromref', 'file' => '/societe/class/societe.class.php', 'class' => 'Societe', 'method' => 'fetch', 'element' => 'ThirdParty'),
+//			't.fk_user_valid' => array('rule' => 'fetchidfromref', 'file' => '/user/class/user.class.php', 'class' => 'User', 'method' => 'fetch', 'element' => 'user'),
+//			't.fk_mode_reglement' => array('rule' => 'fetchidfromcodeorlabel', 'file' => '/compta/paiement/class/cpaiement.class.php', 'class' => 'Cpaiement', 'method' => 'fetch', 'element' => 'cpayment'),
 		);
 		$this->import_run_sql_after_array[$r] = array();
-		$r++; */
+		$r++;
 		/* END MODULEBUILDER IMPORT MYOBJECT */
 	}
 
