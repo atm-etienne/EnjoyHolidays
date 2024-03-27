@@ -74,10 +74,6 @@ EnjoyHolidaysArea = Accueil EnjoyHolidays
 #
 # TransportMean dictionary
 #
-Plane = Avion
-Boat = Bateau
-Bus = Bus
-Train = Train
 
 
 

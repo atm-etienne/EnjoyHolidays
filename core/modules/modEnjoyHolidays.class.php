@@ -558,6 +558,14 @@ class modEnjoyHolidays extends DolibarrModules
 
 		$sql = array();
 
+		// Contacts
+		$sql = array_merge($sql, [
+			"INSERT INTO ".MAIN_DB_PREFIX."c_type_contact (element, source, code, libelle, active) VALUES
+			('travelpackage', 'internal', 'Responsable', 'Contact responsable de la formule de voyage', 1),
+			('travelpackage', 'external', 'Voyageur', 'Contact ayant souscrit à une offre de voyage', 1)
+			"
+		]);
+
 		// Document templates
 		$moduledir = dol_sanitizeFileName('enjoyholidays');
 		$myTmpObjects = array();
