@@ -2,6 +2,8 @@
 
 use Luracast\Restler\RestException;
 
+require_once DOL_DOCUMENT_ROOT."/custom/enjoyholidays/class/travelpackage.class.php";
+
 /**
  * API class for enjoyholidays
  *
@@ -136,16 +138,14 @@ class EnjoyHolidaysApi extends DolibarrApi
 	 * @param string		   $sortorder			Sort order
 	 * @param int			   $limit				Limit for list
 	 * @param int			   $page				Page number
-	 * @param string		   $thirdparty_ids		Thirdparty ids to filter orders of (example '1' or '1,2,3') {@pattern /^[0-9,]*$/i}
 	 * @param string           $sqlfilters          Other criteria to filter answers separated by a comma. Syntax example "(t.ref:like:'SO-%') and (t.date_creation:<:'20160101')"
-	 * @param string           $sqlfilterlines      Other criteria to filter answers separated by a comma. Syntax example "(tl.fk_product:=:'17') and (tl.price:<:'250')"
 	 * @param string		   $properties			Restrict the data returned to theses properties. Ignored if empty. Comma separated list of properties names
 	 * @return  array                               Array of order objects
 	 *
 	 * @throws RestException 404 Not found
 	 * @throws RestException 503 Error
 	 */
-	public function index($sortfield = "t.rowid", $sortorder = 'ASC', $limit = 100, $page = 0, $thirdparty_ids = '', $sqlfilters = '', $sqlfilterlines = '', $properties = '')
+	public function index($sortfield = "t.rowid", $sortorder = 'ASC', $limit = 100, $page = 0, $sqlfilters = '', $properties = '')
 	{
 		if (!DolibarrApiAccess::$user->hasRight('enjoyholidays', 'travelpackage', 'read')) {
 			throw new RestException(401);
@@ -153,55 +153,15 @@ class EnjoyHolidaysApi extends DolibarrApi
 
 		$obj_ret = array();
 
-		// case of external user, $thirdparty_ids param is ignored and replaced by user's socid
-		$socids = DolibarrApiAccess::$user->socid ? DolibarrApiAccess::$user->socid : $thirdparty_ids;
-
-		// If the internal user must only see his customers, force searching by him
-		$search_sale = 0;
-		if (!DolibarrApiAccess::$user->rights->societe->client->voir && !$socids) {
-			$search_sale = DolibarrApiAccess::$user->id;
-		}
-
 		$sql = "SELECT t.rowid";
-		if ((!DolibarrApiAccess::$user->rights->societe->client->voir && !$socids) || $search_sale > 0) {
-			$sql .= ", sc.fk_soc, sc.fk_user"; // We need these fields in order to filter by sale (including the case where the user can only see his prospects)
-		}
-		$sql .= " FROM ".MAIN_DB_PREFIX."commande AS t LEFT JOIN ".MAIN_DB_PREFIX."commande_extrafields AS ef ON (ef.fk_object = t.rowid)"; // Modification VMR Global Solutions to include extrafields as search parameters in the API GET call, so we will be able to filter on extrafields
-
-		if ((!DolibarrApiAccess::$user->rights->societe->client->voir && !$socids) || $search_sale > 0) {
-			$sql .= ", ".MAIN_DB_PREFIX."societe_commerciaux as sc"; // We need this table joined to the select in order to filter by sale
-		}
-
-		$sql .= ' WHERE t.entity IN ('.getEntity('commande').')';
-		if ((!DolibarrApiAccess::$user->rights->societe->client->voir && !$socids) || $search_sale > 0) {
-			$sql .= " AND t.fk_soc = sc.fk_soc";
-		}
-		if ($socids) {
-			$sql .= " AND t.fk_soc IN (".$this->db->sanitize($socids).")";
-		}
-		if ($search_sale > 0) {
-			$sql .= " AND t.rowid = sc.fk_soc"; // Join for the needed table to filter by sale
-		}
-		// Insert sale filter
-		if ($search_sale > 0) {
-			$sql .= " AND sc.fk_user = ".((int) $search_sale);
-		}
+		$sql .= " FROM ".MAIN_DB_PREFIX."enjoyholidays_travelpackage AS t";
 		// Add sql filters
 		if ($sqlfilters) {
 			$errormessage = '';
+			$sql .= " WHERE 1=1";
 			$sql .= forgeSQLFromUniversalSearchCriteria($sqlfilters, $errormessage);
 			if ($errormessage) {
 				throw new RestException(400, 'Error when validating parameter sqlfilters -> '.$errormessage);
-			}
-		}
-		// Add sql filters for lines
-		if ($sqlfilterlines) {
-			$errormessage = '';
-			$sql .= " AND EXISTS (SELECT tl.rowid FROM ".MAIN_DB_PREFIX."commandedet AS tl WHERE tl.fk_commande = t.rowid";
-			$sql .= forgeSQLFromUniversalSearchCriteria($sqlfilterlines, $errormessage);
-			$sql .=	")";
-			if ($errormessage) {
-				throw new RestException(400, 'Error when validating parameter sqlfilterlines -> '.$errormessage);
 			}
 		}
 		$sql .= $this->db->order($sortfield, $sortorder);
@@ -223,18 +183,14 @@ class EnjoyHolidaysApi extends DolibarrApi
 			$i = 0;
 			while ($i < $min) {
 				$obj = $this->db->fetch_object($result);
-				$commande_static = new Commande($this->db);
-				if ($commande_static->fetch($obj->rowid)) {
+				$travelPackageStatic = new TravelPackage($this->db);
+				if ($travelPackageStatic->fetch($obj->rowid)) {
 					// Add external contacts ids
-					$tmparray = $commande_static->liste_contact(-1, 'external', 1);
+					$tmparray = $travelPackageStatic->liste_contact(-1, 'external', 1);
 					if (is_array($tmparray)) {
-						$commande_static->contacts_ids = $tmparray;
+						$travelPackageStatic->contacts_ids = $tmparray;
 					}
-					// Add online_payment_url, cf #20477
-					require_once DOL_DOCUMENT_ROOT.'/core/lib/payments.lib.php';
-					$commande_static->online_payment_url = getOnlinePaymentUrl(0, 'order', $commande_static->ref);
-
-					$obj_ret[] = $this->_filterObjectProperties($this->_cleanObjectDatas($commande_static), $properties);
+					$obj_ret[] = $this->_filterObjectProperties($this->_cleanObjectDatas($travelPackageStatic), $properties);
 				}
 				$i++;
 			}
