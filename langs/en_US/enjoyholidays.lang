@@ -86,6 +86,12 @@ Train = Train
 BoxLatestTravelPackages = Widget to display latest 5 travel packages
 BoxLatestTravelPackagesDescription = Latest travel packages
 
+
+#
+# CRON
+#
+CronTravelPackagesDeleted = The CRON successfully deleted %s non-validated travel packages, created more than 3 weeks ago
+
 #
 # Errors
 #

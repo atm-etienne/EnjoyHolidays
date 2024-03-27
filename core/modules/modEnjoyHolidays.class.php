@@ -295,20 +295,21 @@ class modEnjoyHolidays extends DolibarrModules
 		// unit_frequency must be 60 for minute, 3600 for hour, 86400 for day, 604800 for week
 		/* BEGIN MODULEBUILDER CRON */
 		$this->cronjobs = array(
-			//  0 => array(
-			//      'label' => 'MyJob label',
-			//      'jobtype' => 'method',
-			//      'class' => '/enjoyholidays/class/travelpackage.class.php',
-			//      'objectname' => 'TravelPackage',
-			//      'method' => 'doScheduledJob',
-			//      'parameters' => '',
-			//      'comment' => 'Comment',
-			//      'frequency' => 2,
-			//      'unitfrequency' => 3600,
-			//      'status' => 0,
-			//      'test' => 'isModEnabled("enjoyholidays")',
-			//      'priority' => 50,
-			//  ),
+			  0 => array(
+			      'label' 			=> 'EncloseNonValidatedTravelPackages',
+			      'jobtype' 		=> 'method',
+			      'class' 			=> '/enjoyholidays/class/cron_travelpackage.class.php',
+			      'objectname' 		=> 'TravelPackageCron',
+			      'method' 			=> 'EncloseNonValidatedTravelPackages',
+			      'parameters' 		=> '',
+			      'comment' 		=> 'Comment',
+			      'frequency' 		=> 1,
+			      'unitfrequency' 	=> 86400,
+			      'status' 			=> 1,
+			      'test' 			=> 'isModEnabled("enjoyholidays")',
+			      'priority' 		=> 50,
+				  'datestart'		=> (new DateTime('tomorrow 2 hours'))->format('Y-m-d h:i:d')
+			  ),
 		);
 		/* END MODULEBUILDER CRON */
 		// Example: $this->cronjobs=array(
