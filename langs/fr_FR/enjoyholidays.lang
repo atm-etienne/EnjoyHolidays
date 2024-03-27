@@ -87,6 +87,13 @@ Train = Train
 BoxLatestTravelPackages = Widget pour afficher les 5 dernières formules de voyage
 BoxLatestTravelPackagesDescription = Dernières formules de voyage
 
+
+#
+# CRON
+#
+CronTravelPackagesDeleted = The CRON successfully deleted %s non-validated travel packages, created more than 3 weeks ago
+
+
 #
 # Errors
 #
