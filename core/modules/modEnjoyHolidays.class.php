@@ -556,7 +556,7 @@ class modEnjoyHolidays extends DolibarrModules
 		// Permissions
 		$this->remove($options);
 
-		$sql = array("INSERT INTO ".MAIN_DB_PREFIX."document_model (nom, type, entity) VALUES('azur_travelpackage', 'propal', ".$conf->entity.")");
+		$sql = [];
 
 		// Document templates
 		$moduledir = dol_sanitizeFileName('enjoyholidays');
