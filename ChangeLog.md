@@ -1,5 +1,9 @@
 # CHANGELOG ENJOYHOLIDAYS FOR [DOLIBARR ERP CRM](https://www.dolibarr.org)
 
+## Release 1.12
+
+- NEW: Add new default contact for travel packages - *2024-03-27* 1.12
+
 ## Release 1.8
 
 - NEW: Create extrafields for propal and propalLine: Specific mention, and Manager - *2024-03-25* 1.8 
